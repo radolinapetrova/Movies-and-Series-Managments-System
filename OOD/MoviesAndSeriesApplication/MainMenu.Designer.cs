@@ -46,6 +46,8 @@
             this.btnShowMovies = new System.Windows.Forms.Button();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbPhoneNumber = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnEditInfo = new System.Windows.Forms.Button();
             this.tbEmail = new System.Windows.Forms.TextBox();
@@ -89,6 +91,7 @@
             // 
             this.tbStreamingPlatform.Location = new System.Drawing.Point(193, 300);
             this.tbStreamingPlatform.Name = "tbStreamingPlatform";
+            this.tbStreamingPlatform.ReadOnly = true;
             this.tbStreamingPlatform.Size = new System.Drawing.Size(215, 27);
             this.tbStreamingPlatform.TabIndex = 11;
             this.tbStreamingPlatform.Visible = false;
@@ -97,6 +100,7 @@
             // 
             this.tbReleaseDate.Location = new System.Drawing.Point(193, 253);
             this.tbReleaseDate.Name = "tbReleaseDate";
+            this.tbReleaseDate.ReadOnly = true;
             this.tbReleaseDate.Size = new System.Drawing.Size(215, 27);
             this.tbReleaseDate.TabIndex = 9;
             this.tbReleaseDate.Visible = false;
@@ -136,6 +140,7 @@
             // 
             this.rtbInfo.Location = new System.Drawing.Point(19, 29);
             this.rtbInfo.Name = "rtbInfo";
+            this.rtbInfo.ReadOnly = true;
             this.rtbInfo.Size = new System.Drawing.Size(386, 190);
             this.rtbInfo.TabIndex = 0;
             this.rtbInfo.Text = "";
@@ -242,6 +247,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.tbPhoneNumber);
+            this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.btnLogOut);
             this.tabPage2.Controls.Add(this.btnEditInfo);
             this.tabPage2.Controls.Add(this.tbEmail);
@@ -258,9 +265,25 @@
             this.tabPage2.Text = "Account settings";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tbPhoneNumber
+            // 
+            this.tbPhoneNumber.Location = new System.Drawing.Point(160, 284);
+            this.tbPhoneNumber.Name = "tbPhoneNumber";
+            this.tbPhoneNumber.Size = new System.Drawing.Size(244, 27);
+            this.tbPhoneNumber.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(28, 291);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 20);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Phone number:";
+            // 
             // btnLogOut
             // 
-            this.btnLogOut.Location = new System.Drawing.Point(65, 373);
+            this.btnLogOut.Location = new System.Drawing.Point(879, 381);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(166, 54);
             this.btnLogOut.TabIndex = 7;
@@ -270,16 +293,17 @@
             // 
             // btnEditInfo
             // 
-            this.btnEditInfo.Location = new System.Drawing.Point(65, 285);
+            this.btnEditInfo.Location = new System.Drawing.Point(103, 381);
             this.btnEditInfo.Name = "btnEditInfo";
             this.btnEditInfo.Size = new System.Drawing.Size(166, 54);
             this.btnEditInfo.TabIndex = 6;
             this.btnEditInfo.Text = "Edit";
             this.btnEditInfo.UseVisualStyleBackColor = true;
+            this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(138, 219);
+            this.tbEmail.Location = new System.Drawing.Point(160, 219);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(244, 27);
             this.tbEmail.TabIndex = 5;
@@ -287,7 +311,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 222);
+            this.label4.Location = new System.Drawing.Point(28, 222);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 20);
             this.label4.TabIndex = 4;
@@ -295,7 +319,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(138, 138);
+            this.tbPassword.Location = new System.Drawing.Point(160, 138);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(244, 27);
             this.tbPassword.TabIndex = 3;
@@ -303,7 +327,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 141);
+            this.label3.Location = new System.Drawing.Point(28, 141);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 20);
             this.label3.TabIndex = 2;
@@ -311,7 +335,7 @@
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(138, 66);
+            this.tbUsername.Location = new System.Drawing.Point(160, 66);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(244, 27);
             this.tbUsername.TabIndex = 1;
@@ -319,7 +343,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 69);
+            this.label2.Location = new System.Drawing.Point(28, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 0;
@@ -372,5 +396,7 @@
         private Label label3;
         private TextBox tbUsername;
         private Button btnLogOut;
+        private TextBox tbPhoneNumber;
+        private Label label5;
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tMoL0kd/slfrYD8XmTnMOH3k38mSsqug1HGOObumGmJETfIQl3WeUe7WcfgSOVZFKyH7h+FXqlzbRApiQWI2Ng==",
+  "dgSpecHash": "wGzeibjHvSS0n9t8Nmn810QI3vj/ytQYdDuGSlTMpDtIrNzEc6ZeU98xBjUXoU2/Ri4K1mx0YcIxZNGm3tTwzw==",
   "success": true,
   "projectFilePath": "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\MoviesAndSeriesApplication\\MoviesAndSeriesApplication.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\radol\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\radol\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\radol\\.nuget\\packages\\mysql.data\\8.0.28\\mysql.data.8.0.28.nupkg.sha512",
+    "C:\\Users\\radol\\.nuget\\packages\\mysqlconnector\\2.1.8\\mysqlconnector.2.1.8.nupkg.sha512",
     "C:\\Users\\radol\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\radol\\.nuget\\packages\\renci.sshnet.async\\1.4.0\\renci.sshnet.async.1.4.0.nupkg.sha512",
     "C:\\Users\\radol\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

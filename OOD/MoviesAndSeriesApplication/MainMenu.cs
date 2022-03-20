@@ -18,14 +18,17 @@ namespace MoviesAndSeriesApplication
             tbUsername.Text = LogInForm.CurrentUser;
             tbPassword.Text = um.GetUser(LogInForm.CurrentUser).Password;
             tbEmail.Text = um.GetUser(LogInForm.CurrentUser).Email;
+            tbPhoneNumber.Text = um.GetUser(LogInForm.CurrentUser).PhoneNumber;
         }
 
         UserManager um = new UserManager();
         CPManager cp = new CPManager();
 
+        
+
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            cp.GetByName(lbCinematicPr, tbSearch);
+            cp.GetByName(lbCinematicPr, tbSearch.Text);
         }
 
 
@@ -111,5 +114,12 @@ namespace MoviesAndSeriesApplication
             LogInForm logInForm = new LogInForm();
             logInForm.ShowDialog();
         }
+
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            um.EditInfo(um.GetUser(LogInForm.CurrentUser).Id, tbUsername.Text, tbPassword.Text, tbEmail.Text, tbPhoneNumber.Text);
+        }
+
+        
     }
 }

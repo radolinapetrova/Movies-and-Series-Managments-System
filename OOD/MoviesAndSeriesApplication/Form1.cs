@@ -19,27 +19,59 @@ namespace MoviesAndSeriesApplication
         private void btnLogIn_Click(object sender, EventArgs e)
         {
 
-            if (um.CheckUser(tbUsername.Text, tbPassword.Text))
+            if (um.CheckPassword(tbUsername.Text, tbPassword.Text))
             {
-                currentUser = tbUsername.Text;
-
-                if (um.GetTypeOfAcc(tbUsername.Text) == 1)
+                if (um.CheckUsername(tbUsername.Text))
                 {
-                    this.Hide();
-                    MainMenu mm = new MainMenu();
-                    mm.ShowDialog();
+                    currentUser = tbUsername.Text;
+
+                    if (um.GetTypeOfAcc(tbUsername.Text) == 1)
+                    {
+                        this.Hide();
+                        MainMenu mm = new MainMenu();
+                        mm.ShowDialog();
+                    }
+                    else
+                    {
+                        ManagerForm mf = new ManagerForm();
+                        mf.ShowDialog();
+                    }
                 }
                 else
                 {
-                    ManagerForm mf = new ManagerForm();
-                    mf.ShowDialog();
+                    MessageBox.Show("Wrong username");
                 }
+            }
+            else
+            {
+                MessageBox.Show("Wrong password");
             }
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            um.CreateNewAcc(tbNewUsername.Text, tbNewPass.Text, tbConfirmPass.Text, tbEmail.Text);
+            if (um.CheckPassword(tbNewPass.Text, tbConfirmPass.Text))
+            {
+                if (um.ValidEmail(tbEmail.Text))
+                {
+                    if (um.TakenUsername(tbNewUsername.Text))
+                    {
+                        um.Register(tbNewUsername.Text, tbEmail.Text, tbNewPass.Text, tbName.Text, tbNumber.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("This username is already taken");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The email you have entered is invalid");
+                }
+            }
+            else
+            {
+                MessageBox.Show("The passwords you entered are not matching");
+            }
         }
 
         private void tbConfirmPass_TextChanged(object sender, EventArgs e)

@@ -16,9 +16,13 @@ namespace MoviesAndSeriesApplication
         {
             InitializeComponent();
             tbUsername.Text = LogInForm.CurrentUser;
+            tbPassword.Text = um.GetUser(LogInForm.CurrentUser).Password;
+            tbEmail.Text = um.GetUser(LogInForm.CurrentUser).Email;
+            tbPhoneNumber.Text = um.GetUser(LogInForm.CurrentUser).PhoneNumber;
         }
 
-        CPManager manager = new CPManager();
+        UserManager um = new UserManager();
+        CPManager cpm = new CPManager();
 
         private void rbMovie_CheckedChanged(object sender, EventArgs e)
         {
@@ -39,47 +43,55 @@ namespace MoviesAndSeriesApplication
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
-            if (manager.CheckDate(tbReleaseDate.Text))
+            if (cpm.CheckDate(tbReleaseDate.Text))
             {
-                try
+                if (cpm.GetByPartialName(tbName.Text).Count == 0)
                 {
-                    if (rbMovie.Checked)
+                    try
                     {
-                        manager.AddMovie(tbName.Text, rtbDescription.Text, tbReleaseDate.Text, Convert.ToInt32(tbRuntime.Text), Convert.ToInt32(tbBudget.Text), tbStrPlt.Text, pbImage);
-                        manager.GetProductions(lbCinematicPr);
+                        if (rbMovie.Checked)
+                        {
+                            cpm.AddMovie(tbName.Text, rtbDescription.Text, tbReleaseDate.Text, Convert.ToInt32(tbRuntime.Text), Convert.ToInt32(tbBudget.Text), tbStrPlt.Text, pbImage);
+                            cpm.GetProductions(lbCinematicPr);
 
+                        }
+                        else if (rbTVShow.Checked)
+                        {
+                            cpm.AddTVShow(tbName.Text, rtbDescription.Text, tbReleaseDate.Text, tbStrPlt.Text, Convert.ToInt32(tbSeasons.Text), Convert.ToInt32(tbEpisodes.Text), pbImage);
+                            cpm.GetProductions(lbCinematicPr);
+                        }
                     }
-                    else if (rbTVShow.Checked)
+                    catch (FormatException ex)
                     {
-                        manager.AddTVShow(tbName.Text, rtbDescription.Text, tbReleaseDate.Text, tbStrPlt.Text, Convert.ToInt32(tbSeasons.Text), Convert.ToInt32(tbEpisodes.Text), pbImage);
-                        manager.GetProductions(lbCinematicPr);
+
+                        MessageBox.Show("The information that you added is invalid, please check again!");
                     }
                 }
-                catch (FormatException ex)
+                else
                 {
-
-                    MessageBox.Show("The information that you added is invalid, please check again!");
+                    MessageBox.Show("There already exists a cinematic production with that name!");
                 }
             }
             else
             {
                 MessageBox.Show("You have entered an invalid date!");
             }
-
         }
+
+        string cinPr;
 
         //Displaying the information for the movie/tv show the user chose from the listbox
         private void lbCinematicPr_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedItem = lbCinematicPr.SelectedItem.ToString();
-            CinematicProduction cp = manager.GetCP(selectedItem);
+            CinematicProduction cp = cpm.GetCP(selectedItem);
+            cinPr = selectedItem;
 
             tbName.Text = cp.Name;
             tbReleaseDate.Text = cp.ReleaseDate;
             tbStrPlt.Text = cp.StreamingPlatform;
             rtbDescription.Text = cp.Description;
-            pbImage.Image = manager.GetImage(cp.Id);
+            pbImage.Image = cpm.GetImage(cp.Id);
 
             if (cp is TVShow)
             {
@@ -117,22 +129,22 @@ namespace MoviesAndSeriesApplication
             }
             else
             {
-                selectedItem = tbName.Text;
+                selectedItem = cinPr;
             }
 
-            CinematicProduction cp = manager.GetCP(selectedItem);
+            CinematicProduction cp = cpm.GetCP(selectedItem);
 
-            if (manager.CheckDate(tbReleaseDate.Text))
+            if (this.cpm.CheckDate(tbReleaseDate.Text))
             {
                 if (cp is Movie)
                 {
-                    manager.UpdateMovieInfo((Movie)cp, tbName.Text, rtbDescription.Text, tbStrPlt.Text, tbReleaseDate.Text, Convert.ToInt32(tbRuntime.Text), Convert.ToInt32(tbBudget.Text));
-                    manager.GetProductions(lbCinematicPr);
+                    cpm.UpdateMovieInfo((Movie)cp, tbName.Text, rtbDescription.Text, tbStrPlt.Text, tbReleaseDate.Text, Convert.ToInt32(tbRuntime.Text), Convert.ToInt32(tbBudget.Text));
+                    this.cpm.GetProductions(lbCinematicPr);
                 }
                 else if (cp is TVShow)
                 {
-                    manager.UpdateTVShowInfo((TVShow)cp, tbName.Text, rtbDescription.Text, tbStrPlt.Text, tbReleaseDate.Text, Convert.ToInt32(tbSeasons.Text), Convert.ToInt32(tbEpisodes.Text));
-                    manager.GetProductions(lbCinematicPr);
+                    cpm.UpdateTVShowInfo((TVShow)cp, tbName.Text, rtbDescription.Text, tbStrPlt.Text, tbReleaseDate.Text, Convert.ToInt32(tbSeasons.Text), Convert.ToInt32(tbEpisodes.Text));
+                    this.cpm.GetProductions(lbCinematicPr);
                 }
             }
             else
@@ -143,34 +155,56 @@ namespace MoviesAndSeriesApplication
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
-            manager.GetProductions(lbCinematicPr);
+            cpm.GetProductions(lbCinematicPr);
         }
 
         private void btnShowMovies_Click(object sender, EventArgs e)
         {
-            manager.GetMovies(lbCinematicPr);
+            cpm.GetMovies(lbCinematicPr);
         }
 
         private void btnShowShows_Click(object sender, EventArgs e)
         {
-            manager.GetTVshows(lbCinematicPr);
+            cpm.GetTVshows(lbCinematicPr);
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            manager.GetByName(lbCinematicPr, tbSearch);
+            cpm.GetByName(lbCinematicPr, tbSearch.Text);
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            manager.ChooseImage(pbImage);
+            cpm.ChooseImage(pbImage);
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Hide();
-            LogInForm form = new LogInForm();   
+            LogInForm form = new LogInForm();
             form.ShowDialog();
+        }
+
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            um.EditInfo(um.GetUser(LogInForm.CurrentUser).Id, tbUsername.Text, tbPassword.Text, tbEmail.Text, tbPhoneNumber.Text);
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (lbCinematicPr.SelectedIndex > -1)
+            {
+                string name = lbCinematicPr.SelectedItem.ToString();
+                CinematicProduction cp = cpm.GetCP(name);
+
+                cpm.RemoveCP(cp.Id);
+                this.cpm.GetProductions(lbCinematicPr);
+
+            }
+            else
+            {
+                MessageBox.Show("Please choose a movie from the list!");
+            }
         }
     }
 }

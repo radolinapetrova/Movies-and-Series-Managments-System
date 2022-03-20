@@ -102,6 +102,7 @@
             // 
             this.rtbDescription.Location = new System.Drawing.Point(77, 332);
             this.rtbDescription.Name = "rtbDescription";
+            this.rtbDescription.ReadOnly = true;
             this.rtbDescription.Size = new System.Drawing.Size(328, 186);
             this.rtbDescription.TabIndex = 6;
             this.rtbDescription.Text = "";
@@ -110,6 +111,7 @@
             // 
             this.tbName.Location = new System.Drawing.Point(280, 52);
             this.tbName.Name = "tbName";
+            this.tbName.ReadOnly = true;
             this.tbName.Size = new System.Drawing.Size(312, 27);
             this.tbName.TabIndex = 7;
             // 
@@ -117,6 +119,7 @@
             // 
             this.tbReleaseDate.Location = new System.Drawing.Point(280, 136);
             this.tbReleaseDate.Name = "tbReleaseDate";
+            this.tbReleaseDate.ReadOnly = true;
             this.tbReleaseDate.Size = new System.Drawing.Size(125, 27);
             this.tbReleaseDate.TabIndex = 8;
             // 
@@ -124,6 +127,7 @@
             // 
             this.tbRuntime.Location = new System.Drawing.Point(467, 223);
             this.tbRuntime.Name = "tbRuntime";
+            this.tbRuntime.ReadOnly = true;
             this.tbRuntime.Size = new System.Drawing.Size(125, 27);
             this.tbRuntime.TabIndex = 9;
             // 
@@ -131,6 +135,7 @@
             // 
             this.tbBudget.Location = new System.Drawing.Point(467, 139);
             this.tbBudget.Name = "tbBudget";
+            this.tbBudget.ReadOnly = true;
             this.tbBudget.Size = new System.Drawing.Size(125, 27);
             this.tbBudget.TabIndex = 10;
             // 
@@ -138,6 +143,7 @@
             // 
             this.tbStrPlt.Location = new System.Drawing.Point(280, 223);
             this.tbStrPlt.Name = "tbStrPlt";
+            this.tbStrPlt.ReadOnly = true;
             this.tbStrPlt.Size = new System.Drawing.Size(125, 27);
             this.tbStrPlt.TabIndex = 11;
             // 

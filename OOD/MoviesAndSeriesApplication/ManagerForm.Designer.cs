@@ -60,6 +60,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbPhoneNumber = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnEditInfo = new System.Windows.Forms.Button();
             this.tbEmail = new System.Windows.Forms.TextBox();
@@ -68,6 +70,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -134,6 +137,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.btnBrowse);
             this.groupBox1.Controls.Add(this.pbImage);
             this.groupBox1.Controls.Add(this.btnEdit);
@@ -194,7 +198,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(721, 336);
+            this.btnAdd.Location = new System.Drawing.Point(721, 295);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(148, 40);
             this.btnAdd.TabIndex = 31;
@@ -384,6 +388,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.tbPhoneNumber);
+            this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.btnLogOut);
             this.tabPage2.Controls.Add(this.btnEditInfo);
             this.tabPage2.Controls.Add(this.tbEmail);
@@ -400,9 +406,25 @@
             this.tabPage2.Text = "Account settings";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tbPhoneNumber
+            // 
+            this.tbPhoneNumber.Location = new System.Drawing.Point(172, 322);
+            this.tbPhoneNumber.Name = "tbPhoneNumber";
+            this.tbPhoneNumber.Size = new System.Drawing.Size(244, 27);
+            this.tbPhoneNumber.TabIndex = 17;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(40, 329);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 20);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Phone number:";
+            // 
             // btnLogOut
             // 
-            this.btnLogOut.Location = new System.Drawing.Point(99, 387);
+            this.btnLogOut.Location = new System.Drawing.Point(1099, 407);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(166, 54);
             this.btnLogOut.TabIndex = 15;
@@ -412,24 +434,25 @@
             // 
             // btnEditInfo
             // 
-            this.btnEditInfo.Location = new System.Drawing.Point(99, 299);
+            this.btnEditInfo.Location = new System.Drawing.Point(146, 407);
             this.btnEditInfo.Name = "btnEditInfo";
             this.btnEditInfo.Size = new System.Drawing.Size(166, 54);
             this.btnEditInfo.TabIndex = 14;
             this.btnEditInfo.Text = "Edit";
             this.btnEditInfo.UseVisualStyleBackColor = true;
+            this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(172, 233);
+            this.tbEmail.Location = new System.Drawing.Point(172, 237);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(125, 27);
+            this.tbEmail.Size = new System.Drawing.Size(244, 27);
             this.tbEmail.TabIndex = 13;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(70, 236);
+            this.label10.Location = new System.Drawing.Point(40, 240);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 20);
             this.label10.TabIndex = 12;
@@ -439,13 +462,13 @@
             // 
             this.tbPassword.Location = new System.Drawing.Point(172, 152);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(125, 27);
+            this.tbPassword.Size = new System.Drawing.Size(244, 27);
             this.tbPassword.TabIndex = 11;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(70, 155);
+            this.label11.Location = new System.Drawing.Point(40, 159);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 20);
             this.label11.TabIndex = 10;
@@ -455,17 +478,27 @@
             // 
             this.tbUsername.Location = new System.Drawing.Point(172, 80);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(125, 27);
+            this.tbUsername.Size = new System.Drawing.Size(244, 27);
             this.tbUsername.TabIndex = 9;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(70, 83);
+            this.label12.Location = new System.Drawing.Point(40, 83);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(78, 20);
             this.label12.TabIndex = 8;
             this.label12.Text = "Username:";
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(721, 348);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(148, 40);
+            this.btnRemove.TabIndex = 35;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // ManagerForm
             // 
@@ -529,5 +562,8 @@
         private Label label11;
         private TextBox tbUsername;
         private Label label12;
+        private TextBox tbPhoneNumber;
+        private Label label13;
+        private Button btnRemove;
     }
 }

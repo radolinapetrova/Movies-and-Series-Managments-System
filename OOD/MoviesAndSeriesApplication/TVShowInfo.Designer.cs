@@ -48,6 +48,7 @@
             // 
             this.tbReleaseDate.Location = new System.Drawing.Point(250, 161);
             this.tbReleaseDate.Name = "tbReleaseDate";
+            this.tbReleaseDate.ReadOnly = true;
             this.tbReleaseDate.Size = new System.Drawing.Size(125, 27);
             this.tbReleaseDate.TabIndex = 14;
             // 
@@ -55,6 +56,7 @@
             // 
             this.tbName.Location = new System.Drawing.Point(250, 65);
             this.tbName.Name = "tbName";
+            this.tbName.ReadOnly = true;
             this.tbName.Size = new System.Drawing.Size(334, 27);
             this.tbName.TabIndex = 13;
             // 
@@ -62,6 +64,7 @@
             // 
             this.rtbDescription.Location = new System.Drawing.Point(58, 329);
             this.rtbDescription.Name = "rtbDescription";
+            this.rtbDescription.ReadOnly = true;
             this.rtbDescription.Size = new System.Drawing.Size(343, 186);
             this.rtbDescription.TabIndex = 12;
             this.rtbDescription.Text = "";
@@ -97,6 +100,7 @@
             // 
             this.tbStrPlt.Location = new System.Drawing.Point(250, 239);
             this.tbStrPlt.Name = "tbStrPlt";
+            this.tbStrPlt.ReadOnly = true;
             this.tbStrPlt.Size = new System.Drawing.Size(125, 27);
             this.tbStrPlt.TabIndex = 16;
             // 
@@ -113,6 +117,7 @@
             // 
             this.tbEpisodes.Location = new System.Drawing.Point(459, 239);
             this.tbEpisodes.Name = "tbEpisodes";
+            this.tbEpisodes.ReadOnly = true;
             this.tbEpisodes.Size = new System.Drawing.Size(125, 27);
             this.tbEpisodes.TabIndex = 20;
             // 
@@ -120,6 +125,7 @@
             // 
             this.tbSeasons.Location = new System.Drawing.Point(459, 161);
             this.tbSeasons.Name = "tbSeasons";
+            this.tbSeasons.ReadOnly = true;
             this.tbSeasons.Size = new System.Drawing.Size(125, 27);
             this.tbSeasons.TabIndex = 19;
             // 
