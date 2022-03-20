@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wGzeibjHvSS0n9t8Nmn810QI3vj/ytQYdDuGSlTMpDtIrNzEc6ZeU98xBjUXoU2/Ri4K1mx0YcIxZNGm3tTwzw==",
+  "dgSpecHash": "2IU96d3/LD45Eai2bdcR6OFrMVN3p3Ls6MYqrCoh9y8rINk4oIQabRRySdoGvD3Qr5sNYOMP57wmXUNVD7utkA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\MoviesAndSeriesApplication\\MoviesAndSeriesApplication.csproj",
+  "projectFilePath": "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\MoviesAndSeriesApplication\\MoviesAndSeriesApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\radol\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\radol\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",

@@ -1,0 +1,38 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Watchlist";
+}
+
+<link rel="stylesheet" href="~/css/watchlist.css">
+
+<div class="form">
+    <p class="title">Your watchlist</p>
+    <hr>
+    <div class="titleSort">
+        <p class="title">Count titles</p>
+        <p>Sort by:</p>
+        <select class="sort">
+            <option>All</option>
+            <option>Alphabetical</option>
+            <option>Rating</option>
+            <option>Your rating</option>
+            <option>Popularity</option>
+            <option>Release date</option>
+        </select>
+    </div>
+    <hr>
+    <div class="movie">
+        <div class="container">
+            <a class="add" href="#add">&#10004;</a>
+            <img class="image" src="Pictures/blackWidow.png">
+        </div>
+
+        <div class="info">
+            <a href="movieInfo.html">Black Widow</a>
+            <p>Descr</p>
+        </div>
+    </div>
+
+
+</div>

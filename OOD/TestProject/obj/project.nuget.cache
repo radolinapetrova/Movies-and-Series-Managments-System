@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2R5zotGQWnlWYiO1zbWitnbm+TNa7rpXvGg0sJ+sSyl+xcIOrVlBTeZgiISWL95cXrnCEhh2i9REg2+wayX01A==",
+  "dgSpecHash": "1AYbZ2g0THBjHbvbFpfnur6f+7yVbQwbbShGDfUXQ/O5IekzDC6j7idaCO3z+RZV1ZAkx/JI+07ZMvpVsNsybA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\TestProject\\TestProject.csproj",
+  "projectFilePath": "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\TestProject\\TestProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\radol\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\radol\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",

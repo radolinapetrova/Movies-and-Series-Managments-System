@@ -1,0 +1,376 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(12, 12, 12);
+    font-weight: 300;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 1px;
+    color: white;
+    
+}
+
+.movieInfo {
+    margin-right: 150px;
+    margin-left: 150px;
+}
+
+.tvInfo {
+    margin-right: 150px;
+    margin-left: 150px;
+}
+
+.info {
+    color: rgba(179, 175, 175, 0.837);
+    display: flex;
+    margin-top: 10px;
+}
+
+.dot {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.description {
+    display: flex;
+    padding-bottom: 50px;
+    margin-left: 30px;
+}
+
+.rating {
+    color: gold;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.ratings {
+    display: flex;
+    position: absolute;
+    right: 150px;
+    font-size: 15px;
+}
+
+.popularity {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+    .popularity:hover {
+        background-color: rgba(87, 85, 85, 0.632);
+    }
+
+.yourRating {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.yrRt {
+    display: flex;
+}
+
+.yourRating:hover {
+    background-color: rgba(87, 85, 85, 0.632);
+}
+
+.ratingAll {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.allRt {
+    display: flex;
+}
+
+.ratingAll:hover {
+    background-color: rgba(87, 85, 85, 0.632);
+}
+
+.idk {
+    background-color: grey;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.trailer {
+    padding-top: 20px;
+    display: flex;
+}
+
+.picture {
+    height: 400px;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+.trailer .add {
+    position: absolute;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    background-color: rgba(133, 133, 133, 0.433);
+    margin-left: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+}
+
+    .trailer .add:hover {
+        color: gold;
+        background-color: rgb(133, 133, 133);
+    }
+
+
+.genres {
+    display: flex;
+    margin-left: 50px;
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: smaller;
+}
+
+.genre:hover {
+    color: rgba(255, 217, 0, 0.727);
+    background-color: rgba(128, 128, 128, 0.652);
+}
+
+.genre {
+    padding: 7px;
+    border: 2px solid rgba(255, 255, 255, 0.679);
+    border-radius: 13px;
+    margin-right: 10px;
+}
+
+.descr {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 650px;
+    letter-spacing: 0px;
+    margin-bottom: 20px;
+}
+
+hr {
+    margin-left: 50px;
+    width: 55%;
+    background-color: rgba(200, 201, 202, 0.227);
+}
+
+.director {
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+    .director a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.577);
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+        .director a:hover {
+            color: rgba(255, 217, 0, 0.727);
+        }
+
+.writers {
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+    .writers a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.577);
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+        .writers a:hover {
+            color: rgba(255, 217, 0, 0.727);
+        }
+
+.stars {
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+    .stars a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.577);
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+        .stars a:hover {
+            color: rgba(255, 217, 0, 0.727);
+        }
+
+.idkpt2 {
+    min-width: 60px;
+}
+
+.information {
+    background-color: aliceblue;
+    border-radius: 10px;
+    margin-top: 30px;
+    padding-bottom: 50px;
+    padding-top: 10px;
+}
+
+.topActors {
+    display: flex;
+    color: rgb(38, 38, 38);
+    font-size: 30px;
+}
+
+.line {
+    background-color: gold;
+    margin-left: 70px;
+    width: 5px;
+    height: 40px;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+.image {
+    border-radius: 50%;
+    height: 125px;
+    width: 125px;
+    margin-left: 80px;
+    margin-top: 20px;
+}
+
+.actor {
+    display: flex;
+}
+
+.actors {
+    display: flex;
+    flex-wrap: wrap;
+    color: rgb(97, 97, 97);
+}
+
+    .actors .actorInfo {
+        margin-top: 50px;
+        margin-left: 20px;
+        font-size: 20px;
+        width: 175px;
+        font-family: serif;
+    }
+
+        .actors .actorInfo a {
+            text-decoration: none;
+            color: rgb(56, 55, 55);
+            font-family: 'Anton', sans-serif;
+            font-size: 20px;
+        }
+
+.actorInfo a:hover {
+    color: gold;
+}
+
+.userReviews {
+    margin-top: 40px;
+    display: flex;
+    color: rgb(38, 38, 38);
+    font-size: 30px;
+    width: 680px;
+}
+
+.reviews {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+    .reviews a {
+        color: rgb(58, 58, 58);
+        font-size: 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        letter-spacing: 0px;
+        text-decoration: none;
+    }
+
+.addReview {
+    margin-top: 50px;
+}
+
+.reviews a:hover {
+    color: gold;
+}
+
+.review {
+    max-width: 700px;
+    width: auto;
+    height: auto;
+    box-shadow: -1px 1px 2px 2px rgba(72, 72, 72, 0.75);
+    margin-left: 70px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(58, 58, 58);
+    padding: 20px;
+}
+
+.rate {
+    margin-top: 10px;
+}
+
+    .rate a {
+        text-decoration: none;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+        .rate a:hover {
+            background-color: grey;
+        }
+
+.user {
+    color: rgba(72, 72, 72, 0.75);
+    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 60px;
+    padding: 10px;
+}
+
+.detailsTitle {
+    display: flex;
+    color: black;
+    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.details {
+    color: rgba(31, 31, 31, 0.75);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    margin-left: 70px;
+    padding: 10px;
+}
+
+
+
+.detail {
+    color: rgb(38, 38, 38);
+    margin-right: 15px;
+    min-width: 200px;
+}
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0px;
+    font-size: 40px;
+    margin-top: 50px;
+    margin-left: 30px;
+}
+
+

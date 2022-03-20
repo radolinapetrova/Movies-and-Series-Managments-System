@@ -1,0 +1,43 @@
+﻿@page
+@model MoviesAndSeriesApplicationWeb.Pages.AccountModel
+@{
+    ViewData["Title"] = "Account";
+}
+
+
+<link rel="stylesheet" href="~/css/registration.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<body>
+    <div class="form">
+        <p>Edit account information</p>
+        
+        <form method="post">
+            <p class="info">Username</p>
+            <p><input type="text" asp-for="username" class="userInfo" value="" /></p>
+
+
+            <p class="info">Email</p>
+            <p><input type="text" asp-for="email" class="userInfo"  value="" /></p>
+
+            <p class="info">Phone number</p>
+            <p><input type="text" asp-for="number" class="userInfo" value="" /></p>
+
+            <p class="info">Password</p>
+            <p><input type="text" asp-for="password" class="userInfo"  value="" /></p>
+
+            <button class = "btnRegister" type="submit">Edit information</button>
+
+            <hr>
+
+            <button name="button" value="LogIn" asp-action="check" class="btnLogIn" type="submit">Log Out</button>
+
+        </form>
+    </div>
+
+</body>

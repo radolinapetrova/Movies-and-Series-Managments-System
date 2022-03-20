@@ -7548,11 +7548,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\TestProject\\TestProject.csproj",
+      "projectUniqueName": "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\TestProject\\TestProject.csproj",
       "projectName": "TestProject",
-      "projectPath": "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\TestProject\\TestProject.csproj",
+      "projectPath": "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\TestProject\\TestProject.csproj",
       "packagesPath": "C:\\Users\\radol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\TestProject\\obj\\",
+      "outputPath": "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\TestProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\radol\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7569,8 +7569,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\LogicLayer\\LogicLayer.csproj": {
-              "projectPath": "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\LogicLayer\\LogicLayer.csproj"
+            "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\LogicLayer\\LogicLayer.csproj": {
+              "projectPath": "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\LogicLayer\\LogicLayer.csproj"
             }
           }
         }

@@ -1,0 +1,81 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    font-weight: 300;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 1px;
+}
+
+.account{
+    background-color: grey;
+}
+
+.home {
+    background-color: rgba(34, 34, 27, 0.46);
+}
+
+.form {
+    width: 500px;
+    height: auto;
+    background-color: rgba(128, 128, 128, 0.13);
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 50px;
+    color: white;
+    font-size: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 30px;
+    text-align: center;
+}
+
+.userInfo {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 20px;
+}
+
+.form2 >.info {
+    margin-top: 50px;
+    font-size: 17px;
+    margin-left: 130px;
+    text-align: left;
+}
+
+.userInfo:focus {
+    box-shadow: 0 0 10px gold;
+}
+
+
+
+.btnLogIn {
+    color: black;
+    font-size: 20px;
+    background-color: rgb(223, 209, 130);
+    padding: 5px;
+    border-radius: 5px;
+    width: 250px;
+    margin-top: 50px;
+}
+
+hr {
+    color: rgb(116, 112, 112);
+    margin: auto;
+    margin-top: 50px;
+    width: 70%;
+}
+
+.btnRegister {
+    color: black;
+    font-size: 20px;
+    background-color: rgb(179, 173, 173);
+    padding: 5px;
+    border-radius: 5px;
+    width: 250px;
+    margin-top: 50px;
+}

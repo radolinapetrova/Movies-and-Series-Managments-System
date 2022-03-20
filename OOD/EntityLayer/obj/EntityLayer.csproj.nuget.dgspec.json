@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\EntityLayer\\EntityLayer.csproj": {}
+    "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\EntityLayer\\EntityLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\EntityLayer\\EntityLayer.csproj": {
+    "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\EntityLayer\\EntityLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\EntityLayer\\EntityLayer.csproj",
+        "projectUniqueName": "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\EntityLayer\\EntityLayer.csproj",
         "projectName": "EntityLayer",
-        "projectPath": "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\EntityLayer\\EntityLayer.csproj",
+        "projectPath": "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\EntityLayer\\EntityLayer.csproj",
         "packagesPath": "C:\\Users\\radol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\radol\\Desktop\\Individual Ass\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\EntityLayer\\obj\\",
+        "outputPath": "C:\\Users\\radol\\Desktop\\s-cb06-s2-radolina-petrova-wad-project-main\\s-cb06-s2-radolina-petrova-wad-project\\OOD\\EntityLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\radol\\AppData\\Roaming\\NuGet\\NuGet.Config",

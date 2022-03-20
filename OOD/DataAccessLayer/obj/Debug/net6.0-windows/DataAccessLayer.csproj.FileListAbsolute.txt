@@ -15,3 +15,20 @@ C:\Users\radol\Desktop\Individual Ass\s-cb06-s2-radolina-petrova-wad-project\OOD
 C:\Users\radol\Desktop\Individual Ass\s-cb06-s2-radolina-petrova-wad-project\OOD\DataAccessLayer\obj\Debug\net6.0-windows\refint\DataAccessLayer.dll
 C:\Users\radol\Desktop\Individual Ass\s-cb06-s2-radolina-petrova-wad-project\OOD\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.pdb
 C:\Users\radol\Desktop\Individual Ass\s-cb06-s2-radolina-petrova-wad-project\OOD\DataAccessLayer\obj\Debug\net6.0-windows\ref\DataAccessLayer.dll
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.deps.json
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.dll
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.pdb
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\bin\Debug\net6.0-windows\EntityLayer.dll
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\bin\Debug\net6.0-windows\MySql.Data.DLL
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\bin\Debug\net6.0-windows\EntityLayer.pdb
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.ResolveComReference.cache
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.AssemblyInfo.cs
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.CopyComplete
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.dll
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\refint\DataAccessLayer.dll
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.pdb
+C:\Users\radol\Desktop\s-cb06-s2-radolina-petrova-wad-project-main\OOD\DataAccessLayer\obj\Debug\net6.0-windows\ref\DataAccessLayer.dll

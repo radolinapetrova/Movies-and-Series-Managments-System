@@ -1,0 +1,40 @@
+﻿@page
+@model MoviesAndSeriesApplicationWeb.Pages.LogInModel
+@{
+    ViewData["Title"] = "Log In";
+    Layout = "_MyLayout";
+}
+
+
+
+<link rel="stylesheet" href="~/css/logIn.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<body>
+    <div class="form">
+        <p>Log In</p>
+        
+        <form method="post">
+            <p class="user">Username</p>
+            <p><input type="text" asp-for="username" class="username" name="username" value="" /></p>
+
+            <p class="pass">Password</p>
+            <p><input type="password" asp-for="password" class="password" name="password" value="" /></p>
+
+            <button name="button" href="/Index?username=@Model.username" value="LogIn" asp-action="check" class="btnLogIn" type="submit">Log In</button>
+           
+
+            <hr>
+
+            <button name="button" value="Register" asp-action="check" class = "btnRegister" >Register</button>
+        </form>
+    </div>
+
+</body>
+
+

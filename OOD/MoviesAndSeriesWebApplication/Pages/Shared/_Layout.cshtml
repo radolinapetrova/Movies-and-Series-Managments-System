@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MoviesAndSeriesApplication</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MoviesAndSeriesApplication.styles.css" asp-append-version="true" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="navigation">
+            <a class="home"  asp-area="" asp-page="/Index">Home</a>
+            <a class="menu" href="#menu">Menu</a>
+            <div class="combine">
+                <select class="select">
+                    <option  name="option" value="all">All</option>
+                    <option  name="option" value="movies">Movies</option>
+                    <option  name="option" value="series">Series</option>
+                    <option>Celebrities</option>
+                </select>
+                <div class="searchMenu">
+                    <input class="search" type="text" placeholder="Search..">
+                    <a class="fa fa-search" asp-area="" asp-page="/All"  aria-hidden="true"></a>
+                </div>
+            </div>
+            <a class="watchlist" asp-area="" asp-page="/Watchlist">Watchlist</a>
+            <a class="account" asp-area="" asp-page="/Account">Account</a>
+        </div>
+    </header>
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
