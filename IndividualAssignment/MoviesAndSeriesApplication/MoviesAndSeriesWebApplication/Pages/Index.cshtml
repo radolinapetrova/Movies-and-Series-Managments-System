@@ -1,0 +1,128 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+
+
+    <link rel="stylesheet" href="~/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="trailers">
+        <div class="video-container">
+            <a class="left" href="#nz">&#9665;</a>
+            <a class="right" href="#nz">&#9655;</a>
+            <iframe width="900" height="507" src="https://www.youtube.com/embed/JfVOs4VSpmA" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+        </div>
+
+
+        <div class="allTrailers">
+            @for (int i = 0; i < 3; i++)
+            {
+                <div class="trailerContainer">
+                    <img class="picture" src="Pictures/bulletTrain.png">
+                    <div class="trailer">
+                        <a class="fa fa-play-circle-o" href="#trailer" style="font-size:30px;"></a>
+                        <p>Brad Pitt in 'Bullet train'</p>
+                        <p class="header">Watch the trailer</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="favs">
+        <div class="line"></div>
+        <div class="descr">
+            <p>Top picks</p>
+        </div>
+    </div>
+
+
+    <div class="photos">
+        @for (int i = 5; i < 10; i++)
+        {
+            <div class="movie">
+                <div class="container">
+                    <a class="add" href="#add">+</a>
+                    <img class="photo" src="@Model.GetImage(Model.NewestCP[i].Id)">
+                </div>
+
+                <div class="movieDescr">
+                    <div class="fa fa-star rating"></div>
+                    <t>9.3</t>
+                    <div class="fa fa-star checked"></div>
+                </div>
+                <div class="movieTitle">
+                    
+                    @{
+                        if (Model.NewestCP[i] is Movie)
+                        {
+                            <a href="/MovieInfo?name=@Model.NewestCP[i].Name">@Model.NewestCP[i].Name</a>
+                        }
+                        else if (Model.NewestCP[i] is TVShow)
+                        {
+                            <a href="/TVShowInfo?name=@Model.NewestCP[i].Name">@Model.NewestCP[i].Name</a>
+                        }
+                    }
+                    
+                </div>
+            </div>
+        }
+
+    </div>
+
+
+    <div class="favs">
+        <div class="line"></div>
+        <div class="descr">
+            <p>Newly added</p>
+        </div>
+    </div>
+
+
+    <div class="photos">
+        @for (int i = 0; i < 5; i++)
+        {
+            <div class="movie">
+                <div class="container">
+                    <a class="add" href="#add">+</a>
+                    <img class="photo" src="@Model.GetImage(Model.NewestCP[i].Id)">
+                </div>
+
+                <div class="movieDescr">
+                    <div class="fa fa-star rating"></div>
+                    <t>6.1</t>
+                    <div class="fa fa-star checked"></div>
+                </div>
+                <div class="movieTitle">
+                    @*<a asp-area="" asp-page="/MovieInfo">@Model.NewestCP[i].Name</a>*@
+
+                    @{
+                        if (Model.NewestCP[i] is Movie)
+                        {
+                            <a href="/MovieInfo?name=@Model.NewestCP[i].Name">@Model.NewestCP[i].Name</a>
+                        }
+                        else if (Model.NewestCP[i] is TVShow)
+                        {
+                            <a href="/TVShowInfo?name=@Model.NewestCP[i].Name">@Model.NewestCP[i].Name</a>
+                        }
+                    }
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
