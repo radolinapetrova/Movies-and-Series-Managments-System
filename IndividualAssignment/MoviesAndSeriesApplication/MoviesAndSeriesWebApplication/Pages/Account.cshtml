@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Account";
 }
+@using System.Security.Claims;
 
 
 <link rel="stylesheet" href="~/css/registration.css">
@@ -19,23 +20,21 @@
         
         <form method="post">
             <p class="info">Username</p>
-            <p><input type="text" asp-for="username" class="userInfo" value="" /></p>
-
-
-            <p class="info">Email</p>
-            <p><input type="text" asp-for="email" class="userInfo"  value="" /></p>
+            <p><input type="text" asp-for="username" class="userInfo" value="@User.FindFirst("username").Value"/></p>
+            @*<p><input type="text" asp-for="username" class="userInfo" value="@User.Identity.Name"/></p>*@
+           
 
             <p class="info">Phone number</p>
-            <p><input type="text" asp-for="number" class="userInfo" value="" /></p>
+            <p><input type="text" asp-for="number" class="userInfo" value="@User.FindFirst(ClaimTypes.MobilePhone).Value" /></p>
 
             <p class="info">Password</p>
             <p><input type="text" asp-for="password" class="userInfo"  value="" /></p>
 
-            <button class = "btnRegister" type="submit">Edit information</button>
+            <button class = "btnLogIn" type="submit">Edit information</button>
 
             <hr>
 
-            <button name="button" value="LogIn" asp-action="check" class="btnLogIn" type="submit">Log Out</button>
+            <button name="button" value="LogOut" asp-action="check" class="btnLogIn" type="submit">Log Out</button>
 
         </form>
     </div>

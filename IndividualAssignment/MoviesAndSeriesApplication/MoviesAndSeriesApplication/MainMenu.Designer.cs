@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnAddWatchlist = new System.Windows.Forms.Button();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnShowShows = new System.Windows.Forms.Button();
@@ -50,16 +51,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnEditInfo = new System.Windows.Forms.Button();
-            this.tbEmail = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnRemoveWatchlist = new System.Windows.Forms.Button();
+            this.lbWatchlist = new System.Windows.Forms.ListBox();
+            this.cpPass = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbCinematicPr
@@ -167,6 +171,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -175,6 +180,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnAddWatchlist);
             this.tabPage1.Controls.Add(this.cmbFilter);
             this.tabPage1.Controls.Add(this.lblFilter);
             this.tabPage1.Controls.Add(this.btnShowShows);
@@ -191,6 +197,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Movie/TV Show";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnAddWatchlist
+            // 
+            this.btnAddWatchlist.Location = new System.Drawing.Point(412, 395);
+            this.btnAddWatchlist.Name = "btnAddWatchlist";
+            this.btnAddWatchlist.Size = new System.Drawing.Size(152, 53);
+            this.btnAddWatchlist.TabIndex = 14;
+            this.btnAddWatchlist.Text = "Add to watchlist";
+            this.btnAddWatchlist.UseVisualStyleBackColor = true;
+            this.btnAddWatchlist.Click += new System.EventHandler(this.btnAddWatchlist_Click);
             // 
             // cmbFilter
             // 
@@ -217,7 +233,7 @@
             // 
             // btnShowShows
             // 
-            this.btnShowShows.Location = new System.Drawing.Point(416, 369);
+            this.btnShowShows.Location = new System.Drawing.Point(412, 324);
             this.btnShowShows.Name = "btnShowShows";
             this.btnShowShows.Size = new System.Drawing.Size(152, 53);
             this.btnShowShows.TabIndex = 11;
@@ -227,7 +243,7 @@
             // 
             // btnShowMovies
             // 
-            this.btnShowMovies.Location = new System.Drawing.Point(416, 291);
+            this.btnShowMovies.Location = new System.Drawing.Point(412, 246);
             this.btnShowMovies.Name = "btnShowMovies";
             this.btnShowMovies.Size = new System.Drawing.Size(152, 53);
             this.btnShowMovies.TabIndex = 10;
@@ -237,7 +253,7 @@
             // 
             // btnShowAll
             // 
-            this.btnShowAll.Location = new System.Drawing.Point(416, 210);
+            this.btnShowAll.Location = new System.Drawing.Point(412, 171);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(152, 53);
             this.btnShowAll.TabIndex = 9;
@@ -247,12 +263,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cpPass);
             this.tabPage2.Controls.Add(this.tbPhoneNumber);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.btnLogOut);
             this.tabPage2.Controls.Add(this.btnEditInfo);
-            this.tabPage2.Controls.Add(this.tbEmail);
-            this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.tbPassword);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.tbUsername);
@@ -267,7 +282,7 @@
             // 
             // tbPhoneNumber
             // 
-            this.tbPhoneNumber.Location = new System.Drawing.Point(160, 284);
+            this.tbPhoneNumber.Location = new System.Drawing.Point(160, 224);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(244, 27);
             this.tbPhoneNumber.TabIndex = 9;
@@ -275,7 +290,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 291);
+            this.label5.Location = new System.Drawing.Point(28, 231);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 20);
             this.label5.TabIndex = 8;
@@ -293,29 +308,13 @@
             // 
             // btnEditInfo
             // 
-            this.btnEditInfo.Location = new System.Drawing.Point(103, 381);
+            this.btnEditInfo.Location = new System.Drawing.Point(130, 332);
             this.btnEditInfo.Name = "btnEditInfo";
             this.btnEditInfo.Size = new System.Drawing.Size(166, 54);
             this.btnEditInfo.TabIndex = 6;
             this.btnEditInfo.Text = "Edit";
             this.btnEditInfo.UseVisualStyleBackColor = true;
             this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
-            // 
-            // tbEmail
-            // 
-            this.tbEmail.Location = new System.Drawing.Point(160, 219);
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(244, 27);
-            this.tbEmail.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 222);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Email:";
             // 
             // tbPassword
             // 
@@ -349,6 +348,48 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Username:";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.btnRemoveWatchlist);
+            this.tabPage3.Controls.Add(this.lbWatchlist);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1092, 472);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Watchlist";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveWatchlist
+            // 
+            this.btnRemoveWatchlist.Location = new System.Drawing.Point(406, 36);
+            this.btnRemoveWatchlist.Name = "btnRemoveWatchlist";
+            this.btnRemoveWatchlist.Size = new System.Drawing.Size(152, 53);
+            this.btnRemoveWatchlist.TabIndex = 15;
+            this.btnRemoveWatchlist.Text = "Remove from watchlist";
+            this.btnRemoveWatchlist.UseVisualStyleBackColor = true;
+            this.btnRemoveWatchlist.Click += new System.EventHandler(this.btnRemoveWatchlist_Click);
+            // 
+            // lbWatchlist
+            // 
+            this.lbWatchlist.FormattingEnabled = true;
+            this.lbWatchlist.ItemHeight = 20;
+            this.lbWatchlist.Location = new System.Drawing.Point(39, 36);
+            this.lbWatchlist.Name = "lbWatchlist";
+            this.lbWatchlist.Size = new System.Drawing.Size(331, 404);
+            this.lbWatchlist.TabIndex = 0;
+            this.lbWatchlist.SelectedIndexChanged += new System.EventHandler(this.lbWatchlist_SelectedIndexChanged);
+            // 
+            // cpPass
+            // 
+            this.cpPass.AutoSize = true;
+            this.cpPass.Location = new System.Drawing.Point(437, 141);
+            this.cpPass.Name = "cpPass";
+            this.cpPass.Size = new System.Drawing.Size(134, 24);
+            this.cpPass.TabIndex = 17;
+            this.cpPass.Text = "Show password";
+            this.cpPass.UseVisualStyleBackColor = true;
+            this.cpPass.CheckedChanged += new System.EventHandler(this.cpPass_CheckedChanged);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -364,6 +405,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -390,13 +432,16 @@
         private TabPage tabPage2;
         private Label label2;
         private Button btnEditInfo;
-        private TextBox tbEmail;
-        private Label label4;
         private TextBox tbPassword;
         private Label label3;
         private TextBox tbUsername;
         private Button btnLogOut;
         private TextBox tbPhoneNumber;
         private Label label5;
+        private TabPage tabPage3;
+        private ListBox lbWatchlist;
+        private Button btnAddWatchlist;
+        private Button btnRemoveWatchlist;
+        private CheckBox cpPass;
     }
 }

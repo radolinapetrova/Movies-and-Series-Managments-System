@@ -35,9 +35,11 @@
             this.btnShowMovies = new System.Windows.Forms.Button();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.pbImage = new System.Windows.Forms.PictureBox();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tbBudget = new System.Windows.Forms.TextBox();
             this.tbRuntime = new System.Windows.Forms.TextBox();
@@ -60,17 +62,17 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnRemoveUser = new System.Windows.Forms.Button();
+            this.lbUsers = new System.Windows.Forms.ListBox();
             this.tbPhoneNumber = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnEditInfo = new System.Windows.Forms.Button();
-            this.tbEmail = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.btnRemove = new System.Windows.Forms.Button();
+            this.cpPass = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -137,10 +139,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnClear);
+            this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.btnBrowse);
             this.groupBox1.Controls.Add(this.pbImage);
-            this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.tbBudget);
             this.groupBox1.Controls.Add(this.tbRuntime);
@@ -167,6 +170,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Adding form";
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(536, 97);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(148, 40);
+            this.btnClear.TabIndex = 37;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(721, 420);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(148, 40);
+            this.btnEdit.TabIndex = 36;
+            this.btnEdit.Text = "Edit info";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(721, 363);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(148, 40);
+            this.btnRemove.TabIndex = 35;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // btnBrowse
             // 
             this.btnBrowse.Location = new System.Drawing.Point(536, 36);
@@ -186,19 +219,9 @@
             this.pbImage.TabIndex = 33;
             this.pbImage.TabStop = false;
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(721, 394);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(148, 40);
-            this.btnEdit.TabIndex = 32;
-            this.btnEdit.Text = "Edit info";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(721, 295);
+            this.btnAdd.Location = new System.Drawing.Point(721, 305);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(148, 40);
             this.btnAdd.TabIndex = 31;
@@ -388,12 +411,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cpPass);
+            this.tabPage2.Controls.Add(this.btnRemoveUser);
+            this.tabPage2.Controls.Add(this.lbUsers);
             this.tabPage2.Controls.Add(this.tbPhoneNumber);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.btnLogOut);
             this.tabPage2.Controls.Add(this.btnEditInfo);
-            this.tabPage2.Controls.Add(this.tbEmail);
-            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.tbPassword);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.tbUsername);
@@ -406,9 +430,29 @@
             this.tabPage2.Text = "Account settings";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnRemoveUser
+            // 
+            this.btnRemoveUser.Location = new System.Drawing.Point(783, 383);
+            this.btnRemoveUser.Name = "btnRemoveUser";
+            this.btnRemoveUser.Size = new System.Drawing.Size(166, 54);
+            this.btnRemoveUser.TabIndex = 19;
+            this.btnRemoveUser.Text = "Remove user";
+            this.btnRemoveUser.UseVisualStyleBackColor = true;
+            this.btnRemoveUser.Click += new System.EventHandler(this.btnRemoveUser_Click);
+            // 
+            // lbUsers
+            // 
+            this.lbUsers.FormattingEnabled = true;
+            this.lbUsers.ItemHeight = 20;
+            this.lbUsers.Location = new System.Drawing.Point(713, 54);
+            this.lbUsers.Name = "lbUsers";
+            this.lbUsers.Size = new System.Drawing.Size(280, 304);
+            this.lbUsers.TabIndex = 18;
+            this.lbUsers.SelectedIndexChanged += new System.EventHandler(this.lbUsers_SelectedIndexChanged);
+            // 
             // tbPhoneNumber
             // 
-            this.tbPhoneNumber.Location = new System.Drawing.Point(172, 322);
+            this.tbPhoneNumber.Location = new System.Drawing.Point(172, 238);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(244, 27);
             this.tbPhoneNumber.TabIndex = 17;
@@ -416,7 +460,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(40, 329);
+            this.label13.Location = new System.Drawing.Point(40, 245);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(108, 20);
             this.label13.TabIndex = 16;
@@ -434,29 +478,13 @@
             // 
             // btnEditInfo
             // 
-            this.btnEditInfo.Location = new System.Drawing.Point(146, 407);
+            this.btnEditInfo.Location = new System.Drawing.Point(128, 338);
             this.btnEditInfo.Name = "btnEditInfo";
             this.btnEditInfo.Size = new System.Drawing.Size(166, 54);
             this.btnEditInfo.TabIndex = 14;
             this.btnEditInfo.Text = "Edit";
             this.btnEditInfo.UseVisualStyleBackColor = true;
             this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
-            // 
-            // tbEmail
-            // 
-            this.tbEmail.Location = new System.Drawing.Point(172, 237);
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(244, 27);
-            this.tbEmail.TabIndex = 13;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(40, 240);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 20);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Email:";
             // 
             // tbPassword
             // 
@@ -490,15 +518,16 @@
             this.label12.TabIndex = 8;
             this.label12.Text = "Username:";
             // 
-            // btnRemove
+            // cpPass
             // 
-            this.btnRemove.Location = new System.Drawing.Point(721, 348);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(148, 40);
-            this.btnRemove.TabIndex = 35;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.cpPass.AutoSize = true;
+            this.cpPass.Location = new System.Drawing.Point(439, 155);
+            this.cpPass.Name = "cpPass";
+            this.cpPass.Size = new System.Drawing.Size(134, 24);
+            this.cpPass.TabIndex = 20;
+            this.cpPass.Text = "Show password";
+            this.cpPass.UseVisualStyleBackColor = true;
+            this.cpPass.CheckedChanged += new System.EventHandler(this.cpPass_CheckedChanged);
             // 
             // ManagerForm
             // 
@@ -548,7 +577,6 @@
         private Label label8;
         private Label label9;
         private Button btnAdd;
-        private Button btnEdit;
         private Button btnBrowse;
         private PictureBox pbImage;
         private TabControl tabControl1;
@@ -556,8 +584,6 @@
         private TabPage tabPage2;
         private Button btnLogOut;
         private Button btnEditInfo;
-        private TextBox tbEmail;
-        private Label label10;
         private TextBox tbPassword;
         private Label label11;
         private TextBox tbUsername;
@@ -565,5 +591,10 @@
         private TextBox tbPhoneNumber;
         private Label label13;
         private Button btnRemove;
+        private Button btnEdit;
+        private Button btnClear;
+        private Button btnRemoveUser;
+        private ListBox lbUsers;
+        private CheckBox cpPass;
     }
 }

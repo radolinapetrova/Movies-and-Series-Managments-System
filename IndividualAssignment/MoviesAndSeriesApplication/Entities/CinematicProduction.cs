@@ -1,44 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Entities;
 
 namespace MoviesAndSeriesApplication
 {
-    public abstract class CinematicProduction : IComparable<CinematicProduction>
+    public abstract class CinematicProduction 
     {
         private string name;
         private string description;
         private string releaseDate;
         private string streamingPlatform;
         private int id;
+        private Image img;
+        private ICRUD<CinematicProduction> manager;
         
 
-        public string Name { get { return name; } set { name = value; } }
-        public string ReleaseDate { get { return releaseDate; } set{ releaseDate = value; } }
-        public string StreamingPlatform { get { return streamingPlatform; } set { streamingPlatform = value; } }
-        public string Description { get { return description; } set { description = value; } }
+        public string Name { get { return name; }  }
+        public string ReleaseDate { get { return releaseDate; }  }
+        public string StreamingPlatform { get { return streamingPlatform; } }
+        public string Description { get { return description; } }
         public int Id { get { return id; } }
+        public Image Image { get { return img; } }
+        public ICRUD<CinematicProduction> Manager { get { return manager; } }
 
-        protected CinematicProduction(int id, string name, string description, string releaseDate, string streamingPlatform)
+
+        protected CinematicProduction(int id, string name, string description, string releaseDate, string streamingPlatform, Image img, ICRUD<CinematicProduction> manager)
         {
             this.id = id;
             this.name = name;
             this.description = description;
             this.releaseDate = releaseDate;
             this.streamingPlatform = streamingPlatform;
+            this.img = img;
+            this.manager = manager;
         }
+
 
         public virtual string GetInfo()
         {
             return $"{this.name}\r\n\r\nDescription: \r\n{this.description}";
         }
-        
-        public int CompareTo(CinematicProduction cp)
+
+        public override string ToString()
         {
-            return this.Name.CompareTo(cp.Name);
+            return $"ID: {this.Id}\tName: {this.Name}";
         }
-        
+
+
     }
 }

@@ -54,7 +54,14 @@
         {
             <div class="movie">
                 <div class="container">
-                    <a class="add" href="#add">+</a>
+                   @if(Model.Watchlist.Contains(Model.NewestCP[i].Name)){
+                        <a class="add" href="#add">&#10004;</a>
+                    }
+                    else
+                    {
+                         <a class="add" href="#add">+</a>
+                    }
+
                     <img class="photo" src="@Model.GetImage(Model.NewestCP[i].Id)">
                 </div>
 
@@ -64,18 +71,11 @@
                     <div class="fa fa-star checked"></div>
                 </div>
                 <div class="movieTitle">
-                    
+
                     @{
-                        if (Model.NewestCP[i] is Movie)
-                        {
-                            <a href="/MovieInfo?name=@Model.NewestCP[i].Name">@Model.NewestCP[i].Name</a>
-                        }
-                        else if (Model.NewestCP[i] is TVShow)
-                        {
-                            <a href="/TVShowInfo?name=@Model.NewestCP[i].Name">@Model.NewestCP[i].Name</a>
-                        }
+                        <a href="/MovieInfo?id=@Model.NewestCP[i].Id">@Model.NewestCP[i].Name</a>
                     }
-                    
+
                 </div>
             </div>
         }
@@ -96,7 +96,13 @@
         {
             <div class="movie">
                 <div class="container">
-                    <a class="add" href="#add">+</a>
+                   @if(Model.Watchlist.Contains(Model.NewestCP[i].Name)){
+                        <a class="add" href="#add">&#10004;</a>
+                    }
+                    else
+                    {
+                         <a class="add" href="#add">+</a>
+                    }
                     <img class="photo" src="@Model.GetImage(Model.NewestCP[i].Id)">
                 </div>
 
@@ -109,14 +115,9 @@
                     @*<a asp-area="" asp-page="/MovieInfo">@Model.NewestCP[i].Name</a>*@
 
                     @{
-                        if (Model.NewestCP[i] is Movie)
-                        {
-                            <a href="/MovieInfo?name=@Model.NewestCP[i].Name">@Model.NewestCP[i].Name</a>
-                        }
-                        else if (Model.NewestCP[i] is TVShow)
-                        {
-                            <a href="/TVShowInfo?name=@Model.NewestCP[i].Name">@Model.NewestCP[i].Name</a>
-                        }
+                        <a href="/MovieInfo?id=@Model.NewestCP[i].Id">@Model.NewestCP[i].Name</a>
+                        
+
                     }
 
                 </div>

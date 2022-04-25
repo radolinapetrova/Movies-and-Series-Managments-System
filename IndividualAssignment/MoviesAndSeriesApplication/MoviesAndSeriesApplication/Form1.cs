@@ -1,3 +1,5 @@
+using Entities;
+
 namespace MoviesAndSeriesApplication
 {
     public partial class LogInForm : Form
@@ -8,24 +10,28 @@ namespace MoviesAndSeriesApplication
             tbPassword.UseSystemPasswordChar = true;
             tbNewPass.UseSystemPasswordChar = true;
             tbConfirmPass.UseSystemPasswordChar = true;
+            um = new UserManager(new UserDBM(), new UserDBM());
         }
 
-        UserManager um = new UserManager();
+        UserManager um;
 
-        static string currentUser;
+        static User currentUser;
+        static string currentPassword;
 
-        public static string CurrentUser { get { return currentUser; } }
+        public static User CurrentUser { get { return currentUser; } }
+        public static string CurrentPassword { get { return currentPassword; } }
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-
             if (um.CheckUsername(tbUsername.Text))
             {
                 if (um.CheckPassword(tbUsername.Text, tbPassword.Text))
                 {
-                    currentUser = tbUsername.Text;
+                    currentPassword = tbPassword.Text;
+                    currentUser = um.GetUser(tbUsername.Text);
 
-                    if (um.GetTypeOfAcc(tbUsername.Text) == 1)
+
+                    if (currentUser.TypeAcc == 1)
                     {
                         this.Hide();
                         MainMenu mm = new MainMenu();
@@ -33,6 +39,7 @@ namespace MoviesAndSeriesApplication
                     }
                     else
                     {
+                        this.Hide();
                         ManagerForm mf = new ManagerForm();
                         mf.ShowDialog();
                     }
@@ -48,30 +55,45 @@ namespace MoviesAndSeriesApplication
             }
         }
 
+
+
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (um.CheckPassword(tbNewPass.Text, tbConfirmPass.Text))
+            if (tbName.Text != String.Empty && tbNewPass.Text != String.Empty && tbNewUsername.Text != String.Empty && tbNumber.Text != String.Empty)
             {
-                if (um.ValidEmail(tbEmail.Text))
+                if (um.ConfirmPassword(tbNewPass.Text, tbConfirmPass.Text))
                 {
-                    if (um.TakenUsername(tbNewUsername.Text))
+                    if (um.ValidEmail(tbEmail.Text))
                     {
-                        um.Register(tbNewUsername.Text, tbEmail.Text, tbNewPass.Text, tbName.Text, tbNumber.Text);
+                        if (!um.CheckUsername(tbNewUsername.Text))
+                        {
+
+                            string[] pass = um.GetPass(tbNewPass.Text);
+
+                            um.Register(new User(um.GetId(), 1, tbNewUsername.Text, pass[1], tbEmail.Text, tbName.Text, tbNumber.Text, pass[0]));
+                            MessageBox.Show("Good job!!!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("This username is already taken");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("This username is already taken");
+                        MessageBox.Show("The email you have entered is invalid");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("The email you have entered is invalid");
+                    MessageBox.Show("The passwords you entered are not matching");
                 }
             }
             else
             {
-                MessageBox.Show("The passwords you entered are not matching");
+                MessageBox.Show("All fields are required");
             }
+
         }
 
         private void tbConfirmPass_TextChanged(object sender, EventArgs e)

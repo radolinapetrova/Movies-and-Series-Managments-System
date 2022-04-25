@@ -1,170 +1,289 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoviesAndSeriesApplication;
-using System;
+using LogicLayer;
+using Entities;
+using DataAccessLayer;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace TestProject
 {
     [TestClass]
     public class UnitTesting
     {
-        CPManager cp = new CPManager();
-        UserManager um = new UserManager();
-        CPDBManager db = new CPDBManager();
+        //Tests for the cinematic productions logic layer
 
+        CPManager cpm = new CPManager(new MovieDBMock(), new TVShowDBMock(), new CPDBMock());
 
-        //Checking if the given release date of the cinematic production is valid
         [TestMethod]
-        public void CheckDate()
+        public void TestGetCPById()
         {
-            Assert.IsFalse(cp.CheckDate("201221-2-13"));
+            //Checks the method for retrieving a production from the collection with the previously added productions in the mock db
+            Assert.IsInstanceOfType(cpm.GetCP(1), typeof(Movie));
+            Assert.IsInstanceOfType(cpm.GetCP(5), typeof(TVShow));
+        }
+
+
+        [TestMethod]
+        public void TestAddCP()
+        {
+            CinematicProduction cp = new Movie(9, "i want a new tattoo so bad", "donate to the cause", "2022-04-23", 123, 456, "dealer's choice", null, new MovieDBMock());
+
+            //Checks if the adding method returns true
+            Assert.IsTrue(cpm.AddCP(cp));
+
+            //Checks if the newly added production is added to the list by searching in the collection by its id
+            Assert.AreSame((Movie)cp, cpm.GetCP(9));
+
+        }
+
+        [TestMethod]
+        public void TestRemoveCP()
+        {
+            CinematicProduction cp = new TVShow(10, "my money don't jiggle jiggle", "it folds", "2012-09-23", "i like to see u wiggle wiggle", 12, 345, null, new TVShowDBMock());
+
+            //Checks if the removing method returns true
+            Assert.IsTrue(cpm.RemoveCP(cp));
+
+            //Checks if the newly added production is added to the list by searching in the collection by its id
+            Assert.IsNull(cpm.GetCP(10));
+        }
+
+        [TestMethod]
+        public void TestUpdateCP()
+        {
+            CinematicProduction oldCP = new Movie(11, "idk if i'm doin this right", "but imma do it anyways", "2012-08-23", 123, 23456, "send help", null, new MovieDBMock());
+
+            cpm.AddCP(oldCP);
+
+            CinematicProduction updatedCP = new Movie(11, "idk if i'm doin this right pt2", "but imma do it anyways hehe", "2012-08-23", 123, 23456, "send help", null, new MovieDBMock());
+
+            //Checks if the updating method returns true
+            Assert.IsTrue(cpm.UpdateCP(updatedCP));
+
+            //Checks if the updated movie is the same as the one in the collection and if the old is not
+            Assert.AreSame((Movie)updatedCP, cpm.GetCP(11));
+            Assert.AreNotSame(cpm.GetCP(11), (Movie)oldCP);
+
+        }
+
+
+        [TestMethod]
+        public void TestCheckDate()
+        {
+            Assert.IsFalse(cpm.CheckDate("29185-32-45"));
+        }
+
+        [TestMethod]
+        public void TestGetByPartialName()
+        {
+            CinematicProduction cp1 = new Movie(12, "name1", "fml", "2012-12-09", 123, 234, "i'm hungry fr", null, new MovieDBMock());
+            CinematicProduction cp2 = new TVShow(13, "name2", "hehehhe", "2012-09-23", "riding in my fiat", 12, 23, null, new TVShowDBMock());
+
+            //Creating a list that contains only the two productions with similar names
+            List<CinematicProduction> TestList = new List<CinematicProduction>();
+
+            TestList.Add(cp1);
+            TestList.Add(cp2);
+
+            //Adding the productions to the real list
+            cpm.AddCP(cp1);
+            cpm.AddCP(cp2);
+
+            //Checks if the method returns a list with the same productions that partially contain this name
+            CollectionAssert.AreEqual(TestList, cpm.GetByPartialName("name"));
+           
         }
 
 
 
-        //Checking if the user with right credentials can successfully log in
+
+
+
+
+
+
+
+
+        //Tests for the user logic layer
+
+        UserManager um = new UserManager(new UserDBMock(), new UserDBMock());
+
         [TestMethod]
-        public void CheckUserCorrectCredentials()
+        public void TestGetUserByUsername()
         {
-            Assert.IsTrue(um.CheckUsername("cuci"));
-            Assert.IsTrue(um.CheckPassword("cuci", "4321"));
+            //Checks if the method successfully retrieves a user by their username from the collection
+            Assert.IsNotNull(um.GetUser("radka"));
         }
 
-
-        //Checking if the user is denied acces when providing wrong password
         [TestMethod]
-        public void CheckUserWrongPassword()
+        public void TestCheckUsername()
         {
-            Assert.IsFalse(um.CheckPassword("cuci", "1234"));
+            //Checks if the collection of users contains the given username
+            Assert.IsFalse(um.CheckUsername("cuca"));
+            Assert.IsTrue(um.CheckUsername("radka"));
         }
 
-
-        //Checking if the user is denied acces when providing wrong username
         [TestMethod]
-        public void CheckUserWrongUsername()
+        public void TestCheckPassword()
         {
-            Assert.IsFalse(um.CheckUsername("cecka"));
+            //Checks of the username and the password match
+            Assert.IsTrue(um.CheckPassword("radka", "1234"));
+            Assert.IsFalse(um.CheckPassword("radka", "123"));
         }
 
-
-        //checking if a user is denied access when providing no information for log in
         [TestMethod]
-        public void CheckUserWrongCredentials()
+        public void TestRegisterNewUser()
         {
-            Assert.IsFalse(um.CheckPassword("", ""));
-            Assert.IsFalse(um.CheckUsername(""));
+            string[] pass = um.GetPass("1234");
+
+            User newUser = new User(2, 1, "cvetaa", pass[1], "juicy_cveta", "ceca", "1", pass[0]);
+
+            um.Register(newUser);
+
+            //Checks if the user was successfully added to the collection by retrieving their info by their username
+            Assert.AreSame(newUser, um.GetUser("cvetaa"));
         }
 
-
-        //Checking if the username for registration is already taken by someone
         [TestMethod]
-        public void CreateAccountTakenUsername()
+        public void TestHashPassword()
         {
-            Assert.IsFalse(um.TakenUsername("cuci"));
+            string[] pass = um.GetPass("4321");
+
+            User newUser = new User(3, 1, "vikee", pass[1], "viki_03", "viktoriqq", "1", pass[0]);
+
+            //Registering the newly created user so check if the hashing when creating a new account is successfull
+            um.Register(newUser);
+
+            //Tests for successfull hashing
+            Assert.IsTrue(um.CheckPassword("vikee", "4321"));
+            Assert.AreNotEqual(newUser.Password, "4321");
+        }
+        
+        [TestMethod]
+        public void TestValidEmail()
+        {
+            Assert.IsFalse(um.ValidEmail("123dfjo"));
+            Assert.IsTrue(um.ValidEmail("radolina@gmail.com"));
         }
 
-
-        //Checking if the given by the user email is valid
         [TestMethod]
-        public void CreateAccountInvalidEmail()
+        public void TestHashSameSalt()
         {
-            Assert.IsFalse(um.ValidEmail("1"));
-        }
+            //Creating and registering a new user
+            string[] pass = um.GetPass("4321");
 
+            User oldUser = new User(7, 1, "vancheto", pass[1], "viki_03", "viktoriqq", "1", pass[0]);
 
-        //Checking if the confirmation of the password when creating an account matches the password
-        [TestMethod]
-        public void CreateAccountDifferentPassword()
-        {
-            Assert.IsFalse(um.SamePassword("1234", "4321"));
-        }
+            um.Register(oldUser);
 
+            //Creating a new user with the edited info but same id
+            User newUser = new User(7, 1, "vancheto_2", um.HashNewPass("1234", um.GetUser("vancheto")), "viki_03", "viktoriqq", "1", um.GetUser("vancheto").Salt);
+            
+            
+            //Tests if editing the user password with the same salt is successful
+            um.EditInfo(newUser);
 
-        //Checking if the creation of an account when provided valid info is successfull
-        [TestMethod]
-        public void CreateAccountSuccessful()
-        {
-            Assert.IsTrue(um.Register("pesho", "pesho@gmail.com", "1234", "Pesho", "1"));
-        }
+            Assert.IsFalse(um.CheckPassword("vancheto_2", "4321"));
+            Assert.IsTrue(um.CheckPassword("vancheto_2", "1234"));
+        } 
 
-
-        //Testing if the method for getting the type of an account works (0 - manager; 1 - regular user)
-        [TestMethod]
-        public void GetTypeAcc()
-        {
-            Assert.AreEqual(1, um.GetTypeOfAcc("cuci"));
-        }
-
-
-        //Testing if editing an account information is successfull and if the method for getting a userby their username works
         [TestMethod]
         public void TestEditUserInfo()
         {
-            um.EditInfo(um.GetUser("kali_slunce01").Id, "kali_slunce", "1234", "kali@gmail.com", "+359 12345678");
+            //Creating and registering a new user
+            string[] pass = um.GetPass("1234");
 
-            User user = um.GetUser("kali_slunce");
+            User oldUser = new User(4, 1, "stoil", pass[1], "plovdivski_pruch", "stoikata", "1", pass[0]);
+            um.Register(oldUser);
 
-            Assert.AreEqual(user.Password, "1234");
-            Assert.AreEqual(user.Email, "kali@gmail.com");
-            Assert.AreEqual(user.PhoneNumber, "+359 12345678");
-        }
 
-        //Testing if the searchbar gets the cinematic production having part of their names
-        [TestMethod]
-        public void TestGetCP()
-        {
-            Movie movie = new Movie(1, "Fast and Furious", "Cool movie", "2020-12-01", 123, 200, "Netflix");
-            Movie movie2 = new Movie(100, "Fast and Furious 2", "Cool movie", "2020-12-01", 123, 200, "Netflix");
+            //Editing the info of the created user
+            User editedUser = new User(4, 1, "sussel", pass[1], "plovdivski_pruch", "stoikata", "1", pass[0]);
+            um.EditInfo(editedUser);
 
-            cp.Productions.Add(movie);
-            cp.Productions.Add(movie2);
-
-            List<MoviesAndSeriesApplication.CinematicProduction> compareCP = new List<CinematicProduction>();
-            compareCP.Add(movie);
-            compareCP.Add(movie2);
-
-            CollectionAssert.AreEqual(cp.GetByPartialName("Fast"), compareCP);
+            Assert.IsNull(um.GetUser("stoil"));
+            Assert.AreEqual(editedUser, um.GetUser("sussel"));
         }
 
 
-        //Testing if editing a particular movie's details is successful
         [TestMethod]
-        public void TestEditingMovieInfo()
+        public void TestRemoveUser()
         {
-            cp.UpdateMovieInfo((Movie)cp.GetName("Uncharted"), "Uncharted!", "Street-smart Nathan Drake is recruited by seasoned treasure hunter Victor 'Sully' Sullivan to recover a fortune amassed by Ferdinand Magellan, and lost 500 years ago by the House of Moncada.", "Netflix", "2022-03-17", 116, 120000000);
+            //Tests if the removing of the user, added in the mock db is successful
 
-            Assert.AreEqual((Movie)cp.GetName("Uncharted"), null);
-        }
-
-        //Testing if editing a particular TV Show's details is successful
-        [TestMethod]
-        public void TestEditingTVShowInfo()
-        {
-            cp.UpdateTVShowInfo((TVShow)cp.GetName("Friends"), "Friends!", "Follows the personal and professional lives of six twenty to thirty-something-year-old friends living in Manhattan.", "Netflix", "1994-09-22", 10, 236);
-
-            Assert.AreEqual((TVShow)cp.GetName("Friends"), null);
+            Assert.IsTrue(um.RemoveUser(um.GetUser("radka")));
+            Assert.IsNull(um.GetUser("radka"));
         }
 
 
-        //Testing if the method of retrieving the id of a particular cp 
+
+
+
+
+
+
+
+        //Tests for the watchlist logic layer
+
+        WatchlistManager wm = new WatchlistManager(new WatchlistDBMock());
+
         [TestMethod]
-        public void TestGetId()
+        public void TestGetWatchlist()
         {
-            Assert.AreEqual(db.GetID("Avengers"), 2);
+            string[] pass = um.GetPass("1234");
+
+            um.Register(new User(1, 1, "radolona", pass[1], "radka_piratka@gmail.com", "Rada", "1", pass[0]));
+
+            //Checks if the the method successfully retvrieves the watchlist from the mock db 
+            Assert.AreEqual(wm.GetWatchlist(um.GetUser("radolona")).Productions.Count, 2);
         }
 
-        //TEsting if removing a cp is successful
+
         [TestMethod]
-        public void TestRemovingCP()
+        public void TestContainsMovie()
         {
-            //The TVShow I added has the title "1" and the id 53
+            //First check if the movie exists in the collection
+            Assert.IsNotNull(cpm.GetCP(7));
 
-            cp.RemoveCP(54);
+            //Then check if it is added to a given user's personalised watchlist
+            Assert.IsFalse(wm.ContainMovie(cpm.GetCP(7), um.GetUser("radka")));
+        }
 
-            Assert.AreEqual(db.GetID("1"), 0);
+        [TestMethod]
+        public void TestAddToWatchlist()
+        {
+            //Registering a new user
+            string[] pass = um.GetPass("1234");
+
+            um.Register(new User(1, 1, "radolona", pass[1], "radka_piratka@gmail.com", "Rada", "1", pass[0]));
+
+            wm.GetWatchlist(um.GetUser("radolona"));
+
+            //Checks of the method that adds the production was successfull
+            Assert.IsTrue(wm.AddToWatchlist(um.GetUser("radolona"), cpm.GetCP(4)));
+
+            //Testing if the production was successfully added to the list with the productions from the mock db
+            Assert.AreEqual(um.GetUser("radolona").Watchlist.Productions[2], cpm.GetCP(4));
+            Assert.AreEqual(um.GetUser("radolona").Watchlist.Productions.Count, 3);
+            
+        }
+
+
+
+
+
+
+
+
+
+
+        FactoryClass fc = new FactoryClass(new MovieDBMock(), new TVShowDBMock(), new CPDBMock());
+
+        [TestMethod]
+        public void TestException()
+        {
+            Assert.ThrowsException<FormatException>(() => fc.CreateMovie(Convert.ToInt32("s"), "1", "", "2012-12-12", Convert.ToInt32("s"), Convert.ToInt32("s"), "dnk", null));
         }
     }
 }

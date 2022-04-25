@@ -21,17 +21,22 @@
         </select>
     </div>
     <hr>
-    <div class="movie">
+
+    @for (int i = 0; i < @Model.Watchlist.Productions.Count; i++)
+    {
+        <div class="movie">
         <div class="container">
             <a class="add" href="#add">&#10004;</a>
-            <img class="image" src="Pictures/blackWidow.png">
+            <img class="image" src="@Model.GetImage(Model.Watchlist.Productions[i].Id)">
         </div>
 
         <div class="info">
-            <a href="movieInfo.html">Black Widow</a>
+            <a href="MovieInfo?id=@Model.Watchlist.Productions[i].Id">@Model.Watchlist.Productions[i].Name</a>
             <p>Descr</p>
         </div>
     </div>
+    }
+    
 
 
 </div>

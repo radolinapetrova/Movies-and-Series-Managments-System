@@ -18,27 +18,35 @@
         <p>Register</p>
         
         <form method="post" class="form2">
+            
             <p class="info">Username</p>
-            <p><input type="text" asp-for="username" class="userInfo" value="" /></p>
+            <input type="text" asp-for="UserToCreate.Username" class="userInfo" />
+            <span class="validation-message text-danger" asp-validation-for="UserToCreate.Username"></span>
 
             <p class="info">Name</p>
-            <p><input type="text" asp-for="name" class="userInfo" value="" /></p>
+            <input type="text" asp-for="UserToCreate.Name" class="userInfo" />
+            <span class="validation-message text-danger" asp-validation-for="UserToCreate.Name"></span>
 
             <p class="info">Email</p>
-            <p><input type="text" asp-for="email" class="userInfo"  value="" /></p>
+            <input type="text" asp-for="UserToCreate.Email" class="userInfo"   />
+            <span class="validation-message text-danger" asp-validation-for="UserToCreate.Email"></span>
 
             <p class="info">Phone number</p>
-            <p><input type="text" asp-for="number" class="userInfo" value="" /></p>
+            <input type="text" asp-for="UserToCreate.PhoneNumber" class="userInfo" />
+            <span class="validation-message text-danger" asp-validation-for="UserToCreate.PhoneNumber"></span>
 
             <p class="info">Password</p>
-            <p><input type="text" asp-for="password" class="userInfo"  value="" /></p>
+            <input type="password" asp-for="UserToCreate.Password" class="userInfo"/>
+            <span class="validation-message text-danger" asp-validation-for="UserToCreate.Password"></span>
 
             <p class="info">Confirm Password</p>
-            <p><input type="text" asp-for="confirmPassword" class="userInfo" value="" /></p>
+            <input type="password" asp-for="UserToCreate.ConfirmPass" class="userInfo" />
+            <span class="validation-message text-danger" asp-validation-for="UserToCreate.ConfirmPass"></span>
 
             <hr>
 
             <button class = "btnRegister" type="submit">Register</button>
+           
         </form>
     </div>
 

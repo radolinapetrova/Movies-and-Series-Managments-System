@@ -12,14 +12,14 @@
 
 
 
-        <h1 class="title">@Model.MovieName</h1>
+        <h1 class="title">@Model.CP.Name</h1>
 
         <div class="description">
 
             <div class="info">
                 <p>Movie</p>
                 <div class="dot">&#8226</div>
-                <p>@Model.MV.ReleaseDate</p>
+                <p>@Model.CP.ReleaseDate</p>
                 <div class="dot">&#8226</div>
             </div>
 
@@ -52,13 +52,20 @@
         <div class="trailer">
             <div class="addWL">
                 <a class="add" href="#add">+</a>
-                <img class="picture" src="@Model.GetImage(Model.MV.Id)">
+                @if(Model.CP is Movie){
+                    <img class="picture" src="@Model.GetImage(Model.MV.Id)">
+                }
+                else
+                {
+                    <img class="picture" src="@Model.GetImage(Model.TS.Id)">
+                }
+
             </div>
 
-           @* <iframe width="680" height="400" src="https://www.youtube.com/embed/ybji16u608U"
-                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
-            encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            </iframe>*@
+            @* <iframe width="680" height="400" src="https://www.youtube.com/embed/ybji16u608U"
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+                encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>*@
 
 
         </div>
@@ -79,7 +86,7 @@
 
 
         <div class="descr">
-            <p>@Model.MV.Description</p>
+            <p>@Model.CP.Description</p>
         </div>
         <hr>
         <div class="director">
@@ -163,22 +170,38 @@
             <hr>
             <div class="details">
                 <p class="detail">Release date</p>
-                <p>@Model.MV.ReleaseDate</p>
+                <p>@Model.CP.ReleaseDate</p>
             </div>
             <hr>
-            <div class="details">
-                <p class="detail">Budget</p>
-                <p>$@Model.MV.Budget</p>
-            </div>
-            <hr>
-            <div class="details">
-                <p class="detail">Runtime</p>
-                <p>@Model.MV.Runtime minutes</p>
-            </div>
+            @if (Model.CP is Movie)
+            {
+                <div class="details">
+                    <p class="detail">Budget</p>
+                    <p>$@Model.MV.Budget</p>
+                </div>
+                <hr>
+                <div class="details">
+                    <p class="detail">Runtime</p>
+                    <p>@Model.MV.Runtime minutes</p>
+                </div>
+            }
+            else
+            {
+                <div class="details">
+                    <p class="detail">Seasons</p>
+                    <p>@Model.TS.Seasons</p>
+                </div>
+                <hr>
+                <div class="details">
+                    <p class="detail">Episodes</p>
+                    <p>@Model.TS.Episodes</p>
+                </div>
+            }
+
             <hr>
             <div class="details">
                 <p class="detail">Streaming platform</p>
-                <p>@Model.MV.StreamingPlatform</p>
+                <p>@Model.CP.StreamingPlatform</p>
             </div>
             <hr>
         </div>

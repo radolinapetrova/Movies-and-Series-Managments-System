@@ -71,6 +71,17 @@ body {
     margin-top: 50px;
 }
 
+.btnLogIn {
+    color: black;
+    font-size: 20px;
+    background-color: rgb(223, 209, 130);
+    padding: 5px;
+    border-radius: 5px;
+    width: 250px;
+    margin-top: 50px;
+}
+
+
 hr {
     color: rgb(116, 112, 112);
     margin: auto;

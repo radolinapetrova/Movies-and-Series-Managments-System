@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+@using System.Security.Claims;
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,22 +17,39 @@
 <body>
     <header>
         <div class="navigation">
-            <a class="home"  asp-area="" asp-page="/Index">Home</a>
+            <a class="home" asp-area="" asp-page="/Index">Home</a>
             <a class="menu" href="#menu">Menu</a>
             <div class="combine">
                 <select class="select">
-                    <option  name="option" value="all">All</option>
-                    <option  name="option" value="movies">Movies</option>
-                    <option  name="option" value="series">Series</option>
+                    <option name="option" value="all">All</option>
+                    <option name="option" value="movies">Movies</option>
+                    <option name="option" value="series">Series</option>
                     <option>Celebrities</option>
                 </select>
                 <div class="searchMenu">
                     <input class="search" type="text" placeholder="Search..">
-                    <a class="fa fa-search" asp-area="" asp-page="/All"  aria-hidden="true"></a>
+                    <a class="fa fa-search" asp-area="" asp-page="/All" aria-hidden="true"></a>
                 </div>
             </div>
-            <a class="watchlist" asp-area="" asp-page="/Watchlist">Watchlist</a>
-            <a class="account" asp-area="" asp-page="/Account">Account</a>
+
+
+
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="account" asp-area="" asp-page="/Account">Account</a>
+
+                //Only regular users have access to their personalised watchlist
+                @if (User.FindFirst(ClaimTypes.Role).Value == "1")
+                {
+                     <a class="watchlist" asp-area="" asp-page="/Watchlist">Watchlist</a>
+
+                }
+            }
+            else
+            {
+                <a class="login" asp-area="" asp-page="/LogIn">Log In</a>
+            }
         </div>
     </header>
 

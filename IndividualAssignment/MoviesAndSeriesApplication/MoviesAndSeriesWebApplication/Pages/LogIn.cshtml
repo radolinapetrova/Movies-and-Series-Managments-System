@@ -21,12 +21,15 @@
         
         <form method="post">
             <p class="user">Username</p>
-            <p><input type="text" asp-for="username" class="username" name="username" value="" /></p>
+            <input type="text" asp-for="LogInUser.Username" class="username" name="username"/>
+            <span class="validation-message text-danger" asp-validation-for="LogInUser.Username"></span>
 
             <p class="pass">Password</p>
-            <p><input type="password" asp-for="password" class="password" name="password" value="" /></p>
+            <input type="password" asp-for="LogInUser.Password" class="password" name="password"/>
+            <span class="validation-message text-danger" asp-validation-for="LogInUser.Password"></span>
 
-            <button name="button" href="/Index?username=@Model.username" value="LogIn" asp-action="check" class="btnLogIn" type="submit">Log In</button>
+            
+            <input name="button" value="LogIn" class="btnLogIn" type="submit">
            
 
             <hr>

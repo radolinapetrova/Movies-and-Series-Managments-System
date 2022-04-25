@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LogicLayer;
+using DataAccessLayer;
+using Entities;
 
 namespace MoviesAndSeriesApplication
 {
@@ -15,62 +18,90 @@ namespace MoviesAndSeriesApplication
         public MainMenu()
         {
             InitializeComponent();
-            tbUsername.Text = LogInForm.CurrentUser;
-            tbPassword.Text = um.GetUser(LogInForm.CurrentUser).Password;
-            tbEmail.Text = um.GetUser(LogInForm.CurrentUser).Email;
-            tbPhoneNumber.Text = um.GetUser(LogInForm.CurrentUser).PhoneNumber;
+
+
+            tbUsername.Text = LogInForm.CurrentUser.Username;
+            tbPassword.UseSystemPasswordChar = true;
+            tbPassword.Text = LogInForm.CurrentPassword;
+            tbPhoneNumber.Text = LogInForm.CurrentUser.PhoneNumber;
+
+            um = new UserManager(new UserDBM(), new UserDBM());
+            cp = new CPManager(new MoviesDBManager(), new TVShowDBManager(), new CPDBManager());
+            wm = new WatchlistManager(new WatchlistDBManager());
+
+            GetWatchlist();
         }
 
-        UserManager um = new UserManager();
-        CPManager cp = new CPManager();
+        UserManager um;
+        CPManager cp;
+        WatchlistManager wm;
 
-        
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            cp.GetByName(lbCinematicPr, tbSearch.Text);
+            lbCinematicPr.Items.Clear();
+
+            if (cp.GetByPartialName(tbSearch.Text).Count > 0)
+            {
+                foreach (CinematicProduction p in cp.GetByPartialName(tbSearch.Text))
+                {
+                    lbCinematicPr.Items.Add(p);
+                }
+            }
+            else
+            {
+                lbCinematicPr.Items.Add("No results");
+            }
         }
 
+        CinematicProduction selectedProduction;
 
         private void lbCinematicPr_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedItem = lbCinematicPr.SelectedItem.ToString();
-            CinematicProduction selectedProduction = cp.GetCP(lbCinematicPr.SelectedItem.ToString());
+            selectedProduction = (CinematicProduction)lbCinematicPr.SelectedItem;
 
             rtbInfo.Visible = true;
-            rtbInfo.Text = cp.GetCP(selectedItem).GetInfo();
+            rtbInfo.Text = selectedProduction.GetInfo();
             lblReleaseDate.Visible = true;
             tbReleaseDate.Visible = true;
-            tbReleaseDate.Text = cp.GetCP(selectedItem).ReleaseDate.ToString();
+            tbReleaseDate.Text = selectedProduction.ReleaseDate.ToString();
             lblStreamingPlatform.Visible = true;
             tbStreamingPlatform.Visible = true;
-            tbStreamingPlatform.Text = cp.GetCP(selectedItem).StreamingPlatform.ToString();
+            tbStreamingPlatform.Text = selectedProduction.StreamingPlatform.ToString();
             btnAdditionalInfo.Visible = true;
         }
 
         private void btnAdditionalInfo_Click(object sender, EventArgs e)
         {
-            CinematicProduction selectedItem = cp.GetCP(lbCinematicPr.SelectedItem.ToString());
+            CPInfo newForm = new CPInfo(selectedProduction);
+            newForm.ShowDialog();
+        }
 
-            if (selectedItem is Movie)
+        public void GetProductions()
+        {
+            lbCinematicPr.Items.Clear();
+
+            foreach (CinematicProduction p in cp.Productions)
             {
-                MovieInfo newForm = new MovieInfo(selectedItem, cp.GetImage(selectedItem.Id));
-                newForm.ShowDialog();
-
+                lbCinematicPr.Items.Add(p);
             }
-            else if (selectedItem is TVShow)
-            {
-                cp.GetImage(selectedItem.Id);
-                TVShowInfo newForm = new TVShowInfo(selectedItem, cp.GetImage(selectedItem.Id));
-                newForm.ShowDialog();
-
-            }
-
         }
 
         private void btnShowAll_Click_1(object sender, EventArgs e)
         {
-            cp.GetProductions(lbCinematicPr);
+            GetProductions();
+        }
+
+        public void DisplaySortedCP(string item, string order)
+        {
+            lbCinematicPr.Items.Clear();
+
+            List<CinematicProduction> sortedProductions = cp.Sort(item, order);
+
+            foreach (CinematicProduction cp in sortedProductions)
+            {
+                lbCinematicPr.Items.Add(cp);
+            }
         }
 
         private void cmbFilter_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -78,34 +109,44 @@ namespace MoviesAndSeriesApplication
             switch (cmbFilter.SelectedItem)
             {
                 case "Name ASC":
-                    cp.Productions.Sort();
-                    cp.GetProductions(lbCinematicPr);
+                    DisplaySortedCP("name", "ASC");
                     break;
                 case "Name DESC":
-                    cp.SortNameDesc();
-                    cp.GetProductions(lbCinematicPr);
+                    DisplaySortedCP("name", "DESC");
                     break;
                 case "Release date ASC":
-                    cp.SortDateAsc();
-                    cp.GetProductions(lbCinematicPr);
+                    DisplaySortedCP("release_date", "ASC");
                     break;
                 case "Release date DESC":
-                    cp.SortDateDesc();
-                    cp.GetProductions(lbCinematicPr);
-                    break;
-                default:
+                    DisplaySortedCP("release_date", "DESC");
                     break;
             }
         }
 
         private void btnShowMovies_Click_1(object sender, EventArgs e)
         {
-            cp.GetMovies(lbCinematicPr);
+            lbCinematicPr.Items.Clear();
+
+            foreach (CinematicProduction cp in cp.Productions)
+            {
+                if (cp is Movie)
+                {
+                    lbCinematicPr.Items.Add(cp);
+                }
+            }
         }
 
         private void btnShowShows_Click_1(object sender, EventArgs e)
         {
-            cp.GetTVshows(lbCinematicPr);
+            lbCinematicPr.Items.Clear();
+
+            foreach (CinematicProduction cp in cp.Productions)
+            {
+                if (cp is TVShow)
+                {
+                    lbCinematicPr.Items.Add(cp);
+                }
+            }
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -117,9 +158,80 @@ namespace MoviesAndSeriesApplication
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
-            um.EditInfo(um.GetUser(LogInForm.CurrentUser).Id, tbUsername.Text, tbPassword.Text, tbEmail.Text, tbPhoneNumber.Text);
+            string newPass = um.HashNewPass(tbPassword.Text, LogInForm.CurrentUser);
+
+            if (um.EditInfo(new User(LogInForm.CurrentUser.Id, tbUsername.Text, newPass, tbPhoneNumber.Text)))
+            {
+                MessageBox.Show("You successfully updated your account information!");
+            }
+            
         }
 
-        
+        Watchlist watchlist;
+
+        private void GetWatchlist()
+        {
+            watchlist = wm.GetWatchlist(LogInForm.CurrentUser);
+
+            lbWatchlist.Items.Clear();
+
+            if (watchlist.Productions.Count > 0)
+            {
+                foreach (CinematicProduction cp in watchlist.Productions)
+                {
+                    lbWatchlist.Items.Add(cp);
+                }
+            }
+            else
+            {
+                lbWatchlist.Items.Add("You currently have nothing in your watchlist!");
+            }
+        }
+
+        private void btnAddWatchlist_Click(object sender, EventArgs e)
+        {
+            if (wm.AddToWatchlist(LogInForm.CurrentUser, selectedProduction))
+            {
+                MessageBox.Show("Production successfully added to watchlist!");
+                GetWatchlist();
+            }
+            else
+            {
+                MessageBox.Show("Production is already addet to the watchlist!");
+            }
+            
+        }
+
+        private void btnRemoveWatchlist_Click(object sender, EventArgs e)
+        {
+            if (wm.RemoveFromWatchlist(LogInForm.CurrentUser, selectedProduction))
+            {
+                MessageBox.Show("Production successfully removed from watchlist!");
+                GetWatchlist();
+            }
+        }
+
+        private void lbWatchlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedProduction = (CinematicProduction)lbWatchlist.SelectedItem;
+        }
+
+        int checker = 0;
+
+        private void cpPass_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (checker == 0)
+            {
+                tbPassword.UseSystemPasswordChar = false;
+                tbPassword.PasswordChar = '\0';
+                checker++;
+            }
+            else
+            {
+                tbPassword.UseSystemPasswordChar = true;
+                checker--;
+            }
+        }
     }
 }

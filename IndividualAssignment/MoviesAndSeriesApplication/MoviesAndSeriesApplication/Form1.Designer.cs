@@ -45,11 +45,11 @@
             this.cpPass = new System.Windows.Forms.CheckBox();
             this.cbNewPass = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tbNumber = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -220,20 +220,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registration form";
             // 
-            // groupBox2
+            // label8
             // 
-            this.groupBox2.Controls.Add(this.btnLogIn);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.cpPass);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.tbPassword);
-            this.groupBox2.Controls.Add(this.tbUsername);
-            this.groupBox2.Location = new System.Drawing.Point(38, 26);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(306, 401);
-            this.groupBox2.TabIndex = 19;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Log In Form";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 151);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(108, 20);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Phone number:";
+            // 
+            // tbNumber
+            // 
+            this.tbNumber.Location = new System.Drawing.Point(171, 144);
+            this.tbNumber.Name = "tbNumber";
+            this.tbNumber.Size = new System.Drawing.Size(125, 27);
+            this.tbNumber.TabIndex = 21;
             // 
             // label5
             // 
@@ -251,22 +252,20 @@
             this.tbName.Size = new System.Drawing.Size(125, 27);
             this.tbName.TabIndex = 19;
             // 
-            // label8
+            // groupBox2
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 151);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(108, 20);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Phone number:";
-            // 
-            // tbNumber
-            // 
-            this.tbNumber.Location = new System.Drawing.Point(171, 144);
-            this.tbNumber.Name = "tbNumber";
-            this.tbNumber.PasswordChar = '*';
-            this.tbNumber.Size = new System.Drawing.Size(125, 27);
-            this.tbNumber.TabIndex = 21;
+            this.groupBox2.Controls.Add(this.btnLogIn);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.cpPass);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.tbPassword);
+            this.groupBox2.Controls.Add(this.tbUsername);
+            this.groupBox2.Location = new System.Drawing.Point(38, 26);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(306, 401);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Log In Form";
             // 
             // LogInForm
             // 

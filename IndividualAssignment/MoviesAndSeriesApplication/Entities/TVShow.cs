@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MoviesAndSeriesApplication;
+using Entities;
 
 namespace MoviesAndSeriesApplication
 {
@@ -11,19 +8,26 @@ namespace MoviesAndSeriesApplication
         private int seasons;
         private int episodes;
 
-        public int Seasons { get { return seasons; } set { seasons = value; } }
-        public int Episodes { get { return episodes; } set { episodes = value; } }
+        public int Seasons { get { return seasons; } }
+        public int Episodes { get { return episodes; } }
 
-        public TVShow(int id, string name, string description, string releaseDate, string streamingPlatform, int seasons, int episodes)
-           :base(id, name, description, releaseDate, streamingPlatform)
+
+        public TVShow(int id, string name, string description, string releaseDate, string streamingPlatform, int seasons, int episodes, Image img, ICRUD<CinematicProduction> manager)
+          : base(id, name, description, releaseDate, streamingPlatform, img, manager)
         {
             this.episodes = episodes;
             this.seasons = seasons;
         }
 
+
         public override string GetInfo()
         {
             return $"Name of the TV Show:\r\n{base.GetInfo()}";
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }

@@ -4,6 +4,8 @@
     ViewData["Title"] = "All";
 }
 
+@using System.Security.Claims;
+
 <link rel="stylesheet" href="~/css/index.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,38 +17,41 @@
 
 
 <div class="photos">
-    @for (int i = 0; i < Model.AllCP.Count; i++)
-    {
-        <div class="movie">
-            <div class="container">
-                <a class="add" href="#add">+</a>
-                <img class="photo" src="@Model.GetImage(Model.AllCP[i].Id)">
-            </div>
+    <form method="post">
+        @for (int i = 0; i < @Model.AllCP.Count; i++)
+        {
 
-            <div class="movieDescr">
-                <div class="fa fa-star rating"></div>
-                <t>Rating</t>
-                <div class="fa fa-star checked"></div>
-            </div>
-            <div class="movieTitle">
-                @* <a asp-area="" asp-page="/MovieInfo" asp-route-movieName="@Model.NewestCP[i].Name">@Model.NewestCP[i].Name</a>*@
-
-                @{
-                    if (Model.AllCP[i] is Movie)
+            <div class="movie">
+                <div class="container">
+                    @if (Model.WatchlistContains(Model.AllCP[i], User.FindFirst("username").Value))
                     {
-                        <a href="/MovieInfo?name=@Model.AllCP[i].Name">@Model.AllCP[i].Name</a>
+                        <button class="add" type="submit" href="#add">&#x2713;</button>
                     }
-                    else if (Model.AllCP[i] is TVShow)
+                    else
                     {
-                        <a href="/TVShowInfo?name=@Model.AllCP[i].Name">@Model.AllCP[i].Name</a>
+                        <button class="add" type="submit" href="#add">+</button>
+                    }
+                    <img class="photo" src="@Model.GetImage(Model.AllCP[i].Id)">
+                </div>
+
+                <div class="movieDescr">
+                    <div class="fa fa-star rating"></div>
+                    <t>Rating</t>
+                    <div class="fa fa-star checked"></div>
+                </div>
+                <div class="movieTitle">
+
+                    @{
+                        <a href="/MovieInfo?id=@Model.AllCP[i].Id">@Model.AllCP[i].Name</a>
+
+
                     }
 
-
-                }
-
+                </div>
             </div>
-        </div>
-    }
+        }
+    </form>
+
 
 </div>
 

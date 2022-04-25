@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MoviesAndSeriesApplication;
+using LogicLayer;
 
 namespace MoviesAndSeriesWebApplication.Pages
 {
@@ -13,7 +14,8 @@ namespace MoviesAndSeriesWebApplication.Pages
             _logger = logger;
         }
 
-        CPManager cpm = new CPManager();
+        CPManager cpm = new CPManager(new MoviesDBManager(), new TVShowDBManager(), new CPDBManager());
+        //WatchlistManager wm = new WatchlistManager();
 
         string user = "";
 
@@ -25,25 +27,23 @@ namespace MoviesAndSeriesWebApplication.Pages
         {
             return cpm.ConvertImage(id);
         }
+       
 
-        private string name;
-
-        [BindProperty]
-        public string Name { get; set; }
-
-
-        public void OnGet()
+        public void OnGet(int id)
         {
+            cpm.Sort("release_date", "DESC");
             newestCP = cpm.Productions;
-            cpm.SortDateDesc();
+            //watchlist = wm.GetWatchlist(id);
+
         }
 
         public System.Windows.Forms.HtmlElementCollection Images { get; }
 
-        private List<CinematicProduction> newestCP = new List<CinematicProduction>();
+        private IList<CinematicProduction> newestCP = new List<CinematicProduction>();
+        private List<string> watchlist = new List<string>();
 
-
-        public List<CinematicProduction> NewestCP { get { return newestCP; } }
+        public IList<CinematicProduction> NewestCP { get { return newestCP; } }
+        public IList<string> Watchlist { get { return watchlist; } }
 
 
     }
